@@ -24,6 +24,14 @@ class User {
     this.avatar.yaw.position.set(x, y, z);
   }
 
+  getPosition() {
+    const x = _.floor(this.avatar.position.x);
+    const y = _.floor(this.avatar.position.y);
+    const z = _.floor(this.avatar.position.z);
+
+    return { x, y, z };
+  }
+
   removeBody() {
     const playerSkin = this.avatar.playerSkin;
 

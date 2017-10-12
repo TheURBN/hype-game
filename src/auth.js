@@ -1,0 +1,1 @@
+import firebaseAuth from 'firebase/auth';

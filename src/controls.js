@@ -3,10 +3,10 @@ import fly from 'voxel-fly';
 import highlight from 'voxel-highlight';
 import socket from './socket.js';
 import _ from 'lodash';
+import blockStore from './config/voxelStore.js'
 
-import blockStore from './config/sample.js'
 
-const defaultSetup = (game, user) => {
+const controls = (game, user) => {
   let blockPosPlace, blockPosErase
   const hl = game.highlighter = highlight(game, {
       color: 0xff0000,
@@ -17,22 +17,25 @@ const defaultSetup = (game, user) => {
   hl.on('highlight-adjacent', function (voxelPos) { blockPosPlace = voxelPos })
 
   game.chunkRegion.on('change', (pos) => {
-    const x = _.floor(user.avatar.position.x);
-    const y = _.floor(user.avatar.position.z);
+    const userPositon = user.getPosition();
+    const range = config.ws.range;
 
-    socket.send(`{"method": "get", "args":{"x": ${x}, "y":${y},"range":50}}`);
+    socket.sendWs('get', { x: userPositon.x, y: userPositon.z, range });
   });
 
   game.on('fire', (target, state) => {
     const position = blockPosPlace;
 
     if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > 0)) {
-      game.createBlock(position, user.color);
-      console.log(user);
-      socket.send(`{"method": "post", "args":{"x": ${position[0]}, "y":${position[2]}, "z": ${position[1]}, "owner":${user.color}}}`);
+      const [x, z, y] = position;
+
+      socket.sendWs('post', {
+        x, y, z,
+        owner: user.color,
+      });
     }
   });
 }
 
 
-export default defaultSetup;
+export default controls;
