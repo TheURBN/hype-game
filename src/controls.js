@@ -1,6 +1,7 @@
+import config from './config/config.js';
 import fly from 'voxel-fly';
 import highlight from 'voxel-highlight';
-
+import _ from 'lodash';
 
 import generateSample from './config/sample.js'
 
@@ -15,8 +16,11 @@ const defaultSetup = (game, user) => {
   hl.on('highlight-adjacent', function (voxelPos) { blockPosPlace = voxelPos })
 
   game.on('fire', function (target, state) {
-    var position = blockPosPlace
-    if (position) game.createBlock(position, user.color)
+    const position = blockPosPlace;
+
+    if (position && _.every(position, (v, k) => v < config.worldSize[k])) {
+      game.createBlock(position, user.color);
+    }
   });
 
 

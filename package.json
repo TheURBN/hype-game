@@ -11,6 +11,7 @@
     "heroku-postbuild": "npm install && npm run build"
   },
   "dependencies": {
+    "express": "^4.16.2",
     "path": "^0.12.7",
     "voxel": "^0.5.0",
     "voxel-debug": "^0.3.0",
@@ -21,9 +22,9 @@
     "voxel-player": "^0.1.0",
     "voxel-plugins": "^0.5.0",
     "voxel-registry": "^0.8.3",
+    "voxel-sky": "^0.3.0",
     "voxel-walk": "0.0.5",
-    "vue": "^2.4.2",
-    "express": "^4.16.2"
+    "vue": "^2.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

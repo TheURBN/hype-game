@@ -21,9 +21,8 @@ class User {
     this.game.gravity = this.gravity;
   }
 
-  setPosition(x = 5, y = 50, z = 5) {
+  setPosition(x = 5, y = 5, z = 5) {
     this.avatar.yaw.position.set(x, y, z);
-    console.log(this.avatar);
   }
 
   removeBody() {
