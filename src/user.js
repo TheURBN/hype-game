@@ -14,14 +14,13 @@ class User {
 
   init() {
     this.avatar.possess();
-    this.game.gravity = [0, -0.00036, 0];
     this.setPosition();
     this.removeBody();
     this.makeFly();
     this.game.gravity = this.gravity;
   }
 
-  setPosition(x = 5, y = 5, z = 5) {
+  setPosition(x = 500, y = 20, z = 500) {
     this.avatar.yaw.position.set(x, y, z);
   }
 

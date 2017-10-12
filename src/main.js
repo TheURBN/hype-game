@@ -2,11 +2,13 @@ import './assets/app.css';
 
 import voxelEngine from 'voxel-engine';
 import voxelDebug from 'voxel-debug';
-import User from './user.js'
+import User from './user.js';
+import socket from './socket.js';
+import _ from 'lodash';
 
 
 import controls from './controls.js';
-import config from './config/config.js'
+import config from 'config/config.js';
 
 
 const createGame = () => {
@@ -23,5 +25,5 @@ const createGame = () => {
 	return game;
 }
 
-createGame();
-setTimeout(() => game.showAllChunks(), 500);
+
+export default createGame;

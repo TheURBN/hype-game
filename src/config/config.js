@@ -9,8 +9,9 @@ const options = {
   lightsDisabled: true,
   materials: ['#fff', '#1a85b7','#fcae3d', '#189232'],
   materialFlatColor: true,
-  worldOrigin: [0, 0, 0],
+  worldOrigin: [500, 10, 500],
   worldSize: [1000, 100, 1000],
+  startingPosition: [500, 30, 500],
   playerHeight: 2,
   controls,
 }
