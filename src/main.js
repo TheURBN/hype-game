@@ -2,32 +2,25 @@ import './assets/app.css';
 
 import voxelEngine from 'voxel-engine';
 import voxelDebug from 'voxel-debug';
-import player from 'voxel-player';
+import User from './user.js'
 
 
 import controls from './controls.js';
 import config from './config/config.js'
 
+
 const createGame = () => {
-	// setup the game and add some trees
 	const game = voxelEngine(config);
 	const container = document.getElementById('app');
-	window.game = game // for debugging
 	game.appendTo(container);
+	window.game = game; // for debugging
 
-	const createPlayer = player(game);
-
-	const avatar = createPlayer();
-	avatar.possess();
-	avatar.yaw.position.set(2, 50, 4);
-
-	// remove skin, differently it can be done xD
-	avatar.playerSkin.playerModel.remove(avatar.playerSkin.upperbody);
-	avatar.playerSkin.playerModel.remove(avatar.playerSkin.leftLeg);
-	avatar.playerSkin.playerModel.remove(avatar.playerSkin.rightLeg);
+	const user = new User(game, 2, 2);
 
 	voxelDebug(game);
-	controls(game);
+	controls(game, user);
+
+	return game;
 }
 
 createGame();
