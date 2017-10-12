@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "firebase": "^4.5.0",
     "path": "^0.12.7",
     "socket.io": "^2.0.3",
     "voxel": "^0.5.0",
