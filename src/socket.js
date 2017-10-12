@@ -10,7 +10,7 @@ const socket = new WebSocket(ws.url);
 
 socket.onmessage = (res) => {
   const data = JSON.parse(res.data);
-
+  console.log(data);
   if (!_.isArray(data)) game.createBlock([data.x, data.z, data.y], data.owner);
 
   if (data.length) {

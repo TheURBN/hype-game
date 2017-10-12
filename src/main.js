@@ -17,7 +17,7 @@ const createGame = () => {
 	game.appendTo(container);
 	window.game = game; // for debugging
 
-	const user = new User(game, 2, 2);
+	const user = new User(game, 2, 3);
 
 	voxelDebug(game);
 	controls(game, user);

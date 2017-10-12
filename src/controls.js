@@ -28,6 +28,7 @@ const defaultSetup = (game, user) => {
 
     if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > 0)) {
       game.createBlock(position, user.color);
+      console.log(user);
       socket.send(`{"method": "post", "args":{"x": ${position[0]}, "y":${position[2]}, "z": ${position[1]}, "owner":${user.color}}}`);
     }
   });

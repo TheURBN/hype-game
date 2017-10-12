@@ -3,7 +3,7 @@ import fly from 'voxel-fly';
 
 
 class User {
-  constructor(game, id = 0, color = 2) {
+  constructor(game, id = 0, color = 3) {
     this.game = game;
     this.id = id;
     this.color = color;
