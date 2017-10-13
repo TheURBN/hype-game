@@ -1,1 +1,2 @@
-import firebaseAuth from 'firebase/auth';
+import firebase from 'firebase';
+

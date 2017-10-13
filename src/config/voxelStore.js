@@ -1,4 +1,4 @@
-const sampleBlock = [];
+const voxelStore = {};
 const color = [ 
   '#ffffff', 
   '#000000',
@@ -23,5 +23,5 @@ const color = [
   '#607d8b',  // 21 Blue Grey
 ];
 
-export default sampleBlock;
+export default voxelStore;
 export { color };

@@ -18,6 +18,10 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -39,7 +43,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    port: 5000,
   },
   performance: {
     hints: false
