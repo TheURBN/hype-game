@@ -1,10 +1,10 @@
 <p align="center">
-  <img width="400" height="200" src="https://raw.githubusercontent.com/TheURBN/hype-game/master/src/assets/img/urbn_logo.png">
+  <img width="200" height="200" src="https://raw.githubusercontent.com/TheURBN/hype-game/master/src/assets/img/urbn_logo.png">
 </p>
 
-# hype-GAME
+# HYPE-GAME
 
-🐖💨 Enjoy the best builder the URBN city! 🕶🎮
+🐖💨 Enjoy the best builder the URBN city!
 
 ## Build Setup
 

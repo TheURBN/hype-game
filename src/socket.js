@@ -20,6 +20,9 @@ socket.sendWs = (method = 'get', args) => {
 socket.onmessage = (res) => {
   const data = JSON.parse(res.data);
   const error = _.get(data, 'error.message');
+
+  if (!_.isArray(data) && !error) game.createBlock([data.x, data.z, data.y], data.owner);
+
   if (error) {
     alert({
       type: 'error',
@@ -27,7 +30,6 @@ socket.onmessage = (res) => {
       position: 'bottom',
     });
   }
-  if (!_.isArray(data)) game.createBlock([data.x, data.z, data.y], data.owner);
 
   if (data.length) {
     blockStore.push(data);

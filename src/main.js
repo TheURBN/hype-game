@@ -19,7 +19,12 @@ const createGame = () => {
 	window.game = game; // for debugging
 
 	user = new User(game, 2, 7);
-	window.user = user; // for debuffinf
+  window.addEventListener('keydown', function (ev) {
+    if (ev.keyCode > 48 & ev.keyCode < 57) {
+			user.color = _.toNumber(ev.keyCode.toString().charAt(1));
+			console.log('user.color=', user.color)
+		};
+  })
 
 	voxelDebug(game).close();
 	controls(game, user);
