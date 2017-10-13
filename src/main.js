@@ -1,4 +1,4 @@
-import './assets/app.css';
+import './assets/app.scss';
 
 import voxelEngine from 'voxel-engine';
 import voxelDebug from 'voxel-debug';

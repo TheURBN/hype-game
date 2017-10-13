@@ -1,8 +1,8 @@
-import io from 'socket.io-client';
 import config from 'config/config.js';
 import blockStore from 'config/voxelStore.js';
 import createGame, { user } from './main.js';
 import _ from 'lodash';
+import { alert } from 'notie';
 
 
 const socket = new WebSocket(config.ws.url);
@@ -19,6 +19,14 @@ socket.sendWs = (method = 'get', args) => {
 
 socket.onmessage = (res) => {
   const data = JSON.parse(res.data);
+  const error = _.get(data, 'error.message');
+  if (error) {
+    alert({
+      type: 'error',
+      text: error,
+      position: 'bottom',
+    });
+  }
   if (!_.isArray(data)) game.createBlock([data.x, data.z, data.y], data.owner);
 
   if (data.length) {

@@ -2,6 +2,7 @@ import config from './config/config.js';
 import fly from 'voxel-fly';
 import highlight from 'voxel-highlight';
 import socket from './socket.js';
+import { alert } from 'notie';
 import _ from 'lodash';
 import blockStore from './config/voxelStore.js'
 
@@ -14,8 +15,8 @@ const controls = (game, user) => {
       adjacentActive: () => 1,
   })
 
-  hl.on('highlight-adjacent', function (voxelPos) { blockPosPlace = voxelPos })
-
+  hl.on('highlight-adjacent', (voxel) => blockPosPlace = voxel);
+  
   game.chunkRegion.on('change', (pos) => {
     const userPositon = user.getPosition();
     const range = config.ws.range;
@@ -26,13 +27,15 @@ const controls = (game, user) => {
   game.on('fire', (target, state) => {
     const position = blockPosPlace;
 
-    if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > 0)) {
+    if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > 0) && game.canCreateBlock(position)) {
       const [x, z, y] = position;
 
       socket.sendWs('post', {
         x, y, z,
         owner: user.color,
       });
+    } else {
+      if (position) alert({ type: 'warning', text: 'Voxel cannot be created at this position', position: 'bottom' });
     }
   });
 }

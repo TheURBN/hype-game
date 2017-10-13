@@ -1,0 +1,25 @@
+$notie-color-success: #57BF57;
+$notie-color-warning: #D6A14D;
+$notie-color-error: #E1715B;
+$notie-color-info: #4D82D6;
+$notie-color-neutral: #A0A0A0;
+
+@import "./reset.css";
+@import '../../node_modules/notie/src/notie.scss';
+
+
+.notie-container {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 17px;
+}
+
+#crosshair {
+	position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0 0 -2px;
+  width: 4px;
+  height: 4px;
+  background-color: #d00;
+  opacity: 0.5;
+}
