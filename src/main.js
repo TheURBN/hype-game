@@ -5,6 +5,7 @@ import voxelDebug from 'voxel-debug';
 import User from './user.js';
 import socket from './socket.js';
 import _ from 'lodash';
+import { color } from 'config/voxelStore.js';
 
 
 import controls from './controls.js';
@@ -21,8 +22,8 @@ const createGame = () => {
 	user = new User(game, 2, 7);
   window.addEventListener('keydown', function (ev) {
     if (ev.keyCode > 48 & ev.keyCode < 57) {
-			user.color = _.toNumber(ev.keyCode.toString().charAt(1));
-			console.log('user.color=', user.color)
+			user.color = _.toNumber(ev.keyCode.toString().charAt(1)) || 11;
+			console.log('%c user.color ', `background: ${color[user.color]}; color: #fff`);
 		};
   })
 
