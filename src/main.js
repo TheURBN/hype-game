@@ -23,8 +23,8 @@ const createGame = () => {
 	// debug 
   window.addEventListener('keydown', function (ev) {
     if (ev.keyCode >= 48 & ev.keyCode <= 57) {
-    		user.color = _.toNumber(String.fromCharCode(ev.keyCode));
-    		console.log('%c user.color ', `background: ${color[user.color]}; color: #fff`);
+    		user.color = _.toNumber(String.fromCharCode(ev.keyCode)) + 1;
+    		console.log('%c user.color ', `background: ${color[user.color - 1]}; color: #fff`);
     };
  	})
 
