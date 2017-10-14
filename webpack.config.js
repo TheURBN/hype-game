@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -57,6 +58,7 @@ module.exports = {
       inject: true
     }),
     new ExtractTextPlugin('main.css', { allChunks: true }),
+    new CopyWebpackPlugin([{ from: 'src/assets/textures', to: 'textures' }]),
   ],
 }
 

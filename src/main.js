@@ -22,11 +22,11 @@ const createGame = () => {
 	user = new User(game, 2, 7);
 	// debug 
   window.addEventListener('keydown', function (ev) {
-    if (ev.keyCode > 48 & ev.keyCode < 57) {
-			user.color = _.toNumber(ev.keyCode.toString().charAt(1));
-			console.log('%c user.color ', `background: ${color[user.color]}; color: #fff`);
-		};
-  })
+    if (ev.keyCode >= 48 & ev.keyCode <= 57) {
+    		user.color = _.toNumber(String.fromCharCode(ev.keyCode));
+    		console.log('%c user.color ', `background: ${color[user.color]}; color: #fff`);
+    };
+ 	})
 
 	voxelDebug(game).close();
 	controls(game, user);
