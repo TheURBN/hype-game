@@ -6,6 +6,14 @@ import { alert } from 'notie';
 
 let socket;
 
+async function loadVoxels(data) {
+  await Promise.all(data.map(
+    async (val) => {
+      await game.createBlock([val.x, val.z, val.y], val.owner);
+    }
+  ));
+}
+
 const start = () => {
   socket = new WebSocket(config.ws.url);
   socket.onclose = () => setTimeout(start, 5000);
@@ -34,7 +42,7 @@ const start = () => {
     }
 
     if (data.length) {
-      _.forEach(data, val => game.createBlock([val.x, val.z, val.y], val.owner));
+      loadVoxels(data);
     }
   };
 

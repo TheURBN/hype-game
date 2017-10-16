@@ -6,11 +6,11 @@ const controls = {
 
 const ws = {
   url: 'wss://turg-svc.herokuapp.com/v1/ws/',
-  range: 70,
+  range: 100,
 }
 
 const options = {
-  chunkDistance: 2,
+  chunkDistance: 3,
   generate: (x, y, z) => y === 0,
   lightsDisabled: true,
   materials: color,
