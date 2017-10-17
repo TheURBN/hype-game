@@ -6,7 +6,7 @@ const controls = {
 
 const ws = {
   url: 'wss://turg-svc.herokuapp.com/v1/ws/',
-  range: 100,
+  range: 50,
 }
 
 const options = {

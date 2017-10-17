@@ -18,9 +18,9 @@ const start = () => {
   socket = new WebSocket(config.ws.url);
   socket.onclose = () => setTimeout(start, 5000);
 
-  socket.sendWs = (method = 'get', args) => {
+  socket.sendWs = (type = 'range', args) => {
     const data = {
-      method,
+      type,
       args,
     };
   
@@ -31,8 +31,6 @@ const start = () => {
     const data = JSON.parse(res.data);
     const error = _.get(data, 'error.message');
   
-    if (!_.isArray(data) && !error) game.createBlock([data.x, data.z, data.y], data.owner);
-  
     if (error) {
       alert({
         type: 'error',
@@ -41,9 +39,13 @@ const start = () => {
       });
     }
 
-    if (data.length) {
-      loadVoxels(data);
+    if (data.meta.type === 'update') {
+      const voxel = data.data;
+      console.log(voxel);
+      game.createBlock([voxel.x, voxel.z, voxel.y], voxel.owner);
     }
+
+    if (data.meta.type === 'range') loadVoxels(data.data);
   };
 
   socket.onopen = () => {
@@ -55,7 +57,7 @@ const start = () => {
     const userPositon = user.getPosition();
     const range = config.ws.range;
 
-    socket.send(socket.sendWs('get', { x: userPositon.x, y: userPositon.y, range }));
+    socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.y, range }));
   }
 }
 
