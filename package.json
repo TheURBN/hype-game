@@ -17,12 +17,15 @@
     "firebase": "^4.5.0",
     "notie": "^4.3.1",
     "path": "^0.12.7",
+    "three": "^0.87.1",
+    "threadify": "^0.2.1",
     "voxel": "^0.5.0",
     "voxel-debug": "^0.3.0",
     "voxel-engine": "^0.20.2",
     "voxel-flatland": "^0.1.1",
     "voxel-fly": "^0.1.2",
     "voxel-highlight": "0.0.10",
+    "voxel-perlin-terrain": "^1.0.0",
     "voxel-player": "^0.1.0",
     "voxel-plugins": "^0.5.0",
     "voxel-registry": "^0.8.3",
@@ -50,6 +53,7 @@
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.9.1",
+    "worker-loader": "^1.0.0"
   }
 }
