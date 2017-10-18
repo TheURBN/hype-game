@@ -3,12 +3,14 @@ import fly from 'voxel-fly';
 
 
 class User {
-  constructor(game, id = 0, color = 3) {
+  constructor(game, id = 0, color = 3, position = { x: 500, y: 20, z: 500 }) {
     this.game = game;
     this.id = id;
     this.color = color;
     this.avatar = player(game)();
     this.gravity = game.gravity;
+    this.startPosition = position;
+    this.lastPosition = position;
     this.init();
   }
 

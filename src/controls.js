@@ -21,11 +21,19 @@ const controls = (game, user) => {
   game.chunkRegion.on('change', (pos) => {
     const userPositon = user.getPosition();
     const range = config.ws.range;
+    const paddingX = Math.abs(user.lastPosition.x - userPositon.x);
+    const paddingZ = Math.abs(user.lastPosition.z - userPositon.z);
 
-    socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range });
+    if (!user.start) socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }); user.start = true;
+
+    if (paddingX >= game.chunkSize || paddingZ >= game.chunkSize) {
+      user.lastPosition = userPositon;
+      socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range });
+    };
   });
 
   game.on('fire', (target, state) => {
+
     const position = blockPosPlace;
 
     if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > 0) && game.canCreateBlock(position)) {
