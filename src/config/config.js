@@ -12,11 +12,12 @@ const ws = {
 }
 
 const options = {
-  chunkDistance: 3,
+  chunkDistance: 4,
   removeDistance: 20,
   generate: (x, y, z) => y === 0,
   materials: color,
   materialFlatColor: true,
+  // texturePath: './dist/textures/blocks/', 
   worldOrigin: [500, 10, 500],
   worldSize: [1000, 100, 1000],
   startingPosition: [500, 30, 500],
