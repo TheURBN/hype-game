@@ -40,7 +40,7 @@ const start = () => {
     const error = _.get(data, 'error.message');
   
     if (error) {
-      alert({
+      return alert({
         type: 'error',
         text: error,
         position: 'bottom',
@@ -52,10 +52,7 @@ const start = () => {
       game.createBlock([voxel.x, voxel.z, voxel.y], voxel.owner);
     }
 
-    if (data.meta.type === 'range') {
-      console.log(data.data.length);
-      loadVoxels(data.data);
-    }
+    if (data.meta.type === 'range') loadVoxels(data.data);
   };
 
   socket.onopen = () => {

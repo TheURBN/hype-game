@@ -3,7 +3,7 @@ import fly from 'voxel-fly';
 
 
 class User {
-  constructor(game, id = 0, color = 3, position = { x: 500, y: 20, z: 500 }) {
+  constructor(game, id = 0, color = 3, position = { x: 500, y: 10, z: 500 }) {
     this.game = game;
     this.id = id;
     this.color = color;
@@ -22,7 +22,7 @@ class User {
     this.game.gravity = this.gravity;
   }
 
-  setPosition(x = 500, y = 20, z = 500) {
+  setPosition(x = 500, y = 10, z = 500) {
     this.avatar.yaw.position.set(x, y, z);
   }
 

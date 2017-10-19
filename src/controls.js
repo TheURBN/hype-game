@@ -4,7 +4,8 @@ import highlight from 'voxel-highlight';
 import socket from './socket.js';
 import { alert } from 'notie';
 import _ from 'lodash';
-import voxelStore from './config/voxelStore.js'
+import voxelStore from './config/voxelStore.js';
+import nanoid from 'nanoid';
 
 
 const controls = (game, user) => {
