@@ -3,6 +3,7 @@ import voxelStore from 'config/voxelStore.js';
 import createGame, { user } from './main.js';
 import _ from 'lodash';
 import { alert } from 'notie';
+import nanoid from 'nanoid';
 import Worker from './voxels.worker.js'
 
 const worker = new Worker()
@@ -26,8 +27,10 @@ const start = () => {
   socket.onclose = () => setTimeout(start, 5000);
 
   socket.sendWs = (type = 'range', args) => {
+    const id = nanoid();
     const data = {
       type,
+      id,
       args,
     };
   
@@ -39,7 +42,7 @@ const start = () => {
     const data = JSON.parse(res.data);
     const error = _.get(data, 'error.message');
   
-    if (error) {
+    if (!_.isUndefined(error)) {
       return alert({
         type: 'error',
         text: error,
