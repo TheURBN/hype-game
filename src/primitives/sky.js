@@ -18,8 +18,8 @@ const sky = (game) => {
   
   function animation() {
     requestAnimationFrame(animation);
-    sky.rotation.x += 180/Math.PI * 0.000005;
-    sky.rotation.y += 180/Math.PI * 0.000005;
+    sky.rotation.x += 180/Math.PI * 0.000001;
+    sky.rotation.y += 180/Math.PI * 0.000001;
     game.render();
   };
   
