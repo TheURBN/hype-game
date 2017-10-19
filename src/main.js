@@ -1,43 +1,52 @@
-import './assets/app.scss';
-
-import voxelEngine from 'voxel-engine';
-import voxelDebug from 'voxel-debug';
-
-
+import Vue from 'vue';
+import App from './components/App.vue';
+import firebase from 'firebase';
 import User from './user.js';
-import socket from './socket.js';
-import _ from 'lodash';
-import { color } from 'config/voxelStore.js';
+import auth from './auth.js';
+import createGame from './game.js';
+import store from 'store';
+
+window.store = store;
+
+import './assets/css/app.scss';
 
 
-import controls from './controls.js';
-import config from 'config/config.js';
-import loadPrimitives from './primitives';
+const section = (name) => {
+	const element = document.getElementById(name);
 
-let user;
+	const actions = {
+		show: () => element.style.display = '',
+		hide: () => element.style.display = 'none',
+	};
 
-const createGame = () => {
-	const game = voxelEngine(config);
-	const container = document.getElementById('app');
-	loadPrimitives(game);
-	game.appendTo(container);
-	window.game = game; // for debugging
+	 return actions;
+};
 
-	user = new User(game, 2, 7);
-	game.user = user;
-	// debug 
-  window.addEventListener('keydown', function (ev) {
-    if (ev.keyCode >= 48 & ev.keyCode <= 57) {
-    		user.color = _.toNumber(String.fromCharCode(ev.keyCode)) + 1;
-    		console.log('%c user.color ', `background: ${color[user.color - 1]}; color: #fff`);
-    };
- 	});
+const initApp = () => {	
+	auth();
 
-	voxelDebug(game).close();
-	controls(game, user);
+	section('loader').show();
+	section('sign-in').hide();
+	section('app').hide();
 
-	return game;
-}
+	firebase.auth().onAuthStateChanged((user) => {
+		if (user) {
+			store.user = new User(user);
+			section('app').show();
+			section('loader').hide();
 
-export default createGame;
-export { user };
+			store.game = createGame();
+			section('sign-in').hide();
+
+			new Vue({ el: '#control-panel', render: h => h(App) });
+		} else {
+			section('loader').hide();
+			section('sign-in').show();
+		}
+	}, function(error) {
+		console.log(error);
+	});
+};
+
+
+window.addEventListener('load', initApp);

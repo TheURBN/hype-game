@@ -59,18 +59,18 @@ const start = () => {
   };
 
   socket.onopen = () => {
-    if (_.isUndefined(window.game)) {
-      createGame();
-      setTimeout(() => game.showAllChunks(), 500);
-    }
+    // if (_.isUndefined(window.game)) {
+    //   createGame();
+    //   setTimeout(() => game.showAllChunks(), 500);
+    // }
 
-    const userPositon = user.getPosition();
-    const range = config.ws.range;
+    // const userPositon = user.getPosition();
+    // const range = config.ws.range;
 
-    socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
-    setTimeout(() => {
-      socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
-    }, 5000)
+    // socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
+    // setTimeout(() => {
+    //   socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
+    // }, 5000)
   }
 }
 

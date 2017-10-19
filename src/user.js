@@ -3,23 +3,21 @@ import fly from 'voxel-fly';
 
 
 class User {
-  constructor(game, id = 0, color = 3, position = { x: 500, y: 10, z: 500 }) {
-    this.game = game;
-    this.id = id;
-    this.color = color;
-    this.avatar = player(game)();
-    this.gravity = game.gravity;
+  constructor(user, position = { x: 500, y: 10, z: 500 }) {
+    this.name = user.displayName;
+    this.email = user.email;
+    this.id = user.uid;
+    this.photo = user.photoURL;
     this.startPosition = position;
     this.lastPosition = position;
-    this.init();
   }
 
-  init() {
+  init(game) {
+    this.avatar = player(game)();
     this.avatar.possess();
     this.setPosition();
     this.removeBody();
-    this.makeFly();
-    this.game.gravity = this.gravity;
+    this.makeFly(game);
   }
 
   setPosition(x = 500, y = 10, z = 500) {
@@ -42,8 +40,8 @@ class User {
     playerSkin.playerModel.remove(playerSkin.rightLeg);
   }
 
-  makeFly() {
-    const makeFly = fly(this.game)
+  makeFly(game) {
+    const makeFly = fly(game)
     const target = this.avatar;
     game.flyer = makeFly(target);
   }

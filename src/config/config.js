@@ -11,7 +11,7 @@ const ws = {
   range: 100,
 }
 
-const options = {
+const game = {
   chunkDistance: 4,
   removeDistance: 20,
   generate: (x, y, z) => y === 0,
@@ -24,8 +24,14 @@ const options = {
   skyColor: '0x000000',
   playerHeight: 2,
   mesher: voxel.meshers.greedy,
+}
+
+const options = {
+  game,
   controls,
   ws,
+  worldSize: [1000, 100, 1000],
 }
+
 
 export default options;

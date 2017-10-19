@@ -1,0 +1,76 @@
+$notie-color-success: #57BF57;
+$notie-color-warning: #D6A14D;
+$notie-color-error: #E1715B;
+$notie-color-info: #4D82D6;
+$notie-color-neutral: #A0A0A0;
+
+@import "./reset.css";
+@import "./loading.scss";
+@import '../../../node_modules/notie/src/notie.scss';
+
+html, body {
+  font-family: 'Roboto', sans-serif;  
+}
+
+.notie-container {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 17px;
+}
+
+.crosshair {
+	position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0 0 -2px;
+  width: 4px;
+  height: 4px;
+  background-color: #d00;
+  opacity: 0.5;
+}
+
+#wsTime {
+  position: absolute;
+  top: 20px;
+  background: #000;
+  color: #fff;
+  left: 20px;
+}
+
+body {
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Roboto;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #353535;
+}
+
+.sign-in {
+  h1 {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    margin-top: -10px;
+    display: block;
+  }
+}
+
+
