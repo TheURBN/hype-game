@@ -1,9 +1,3 @@
-let voxelStore = {
-  items: [],
-};
-
-window.voxelStore = voxelStore;
-
 const color = [ 
   '#ffffff', 
   '#000000',
@@ -47,5 +41,4 @@ const color = [
 // 	'colored_black',
 // ]
 
-export default voxelStore;
-export { color };
+export default color;

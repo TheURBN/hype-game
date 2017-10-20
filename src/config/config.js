@@ -1,10 +1,5 @@
-import { color } from './voxelStore.js'; 
+import color from './materials.js'; 
 import voxel from 'voxel';
-
-const controls = {
-  discreteFire: true,
-  airControl: false,
-};
 
 const ws = {
   url: 'wss://turg-svc.herokuapp.com/v1/ws/',
@@ -24,11 +19,14 @@ const game = {
   skyColor: '0x000000',
   playerHeight: 2,
   mesher: voxel.meshers.greedy,
+  controls: {
+    discreteFire: true,
+    airControl: false,
+  },
 }
 
 const options = {
   game,
-  controls,
   ws,
   worldSize: [1000, 100, 1000],
 }

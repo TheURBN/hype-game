@@ -1,16 +1,27 @@
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
+import { alert } from 'notie';
+import store from 'store';
+
 
 const uiConfig = {
   callbacks: {
     signInSuccess: function(currentUser, credential, redirectUrl) {
-      console.log(currentUser, credential, redirectUrl);
+      store.section('loader').show();
+      store.section('sign-in').hide();
+      console.log('show');
+
+      alert({
+        type: 'success',
+        text: 'You success autroization',
+        position: 'bottom',
+      });
+
       return true;
     },
-    uiShown: function() {
-      console.log('uiShown');
-      // document.getElementById('loader').style.display = 'none';
-    }
+    uiShown: () => {
+      console.log('load');
+    },
   },
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -19,7 +30,6 @@ const uiConfig = {
     firebase.auth.GithubAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
-  signInSuccessUrl: '/?mode=signin',
   signInFlow: 'popup',
 };
 
@@ -34,8 +44,7 @@ const config = {
 
 const init = () => {
   // init firebase app;
-  firebase.initializeApp(config);
-
+  store.firebase = firebase.initializeApp(config);
   const ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', uiConfig);
 };
