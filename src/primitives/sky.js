@@ -14,14 +14,14 @@ const sky = (game) => {
   game.view.camera.far = 100000;
   game.render();
 
-  animation();
+  // animation();
   
-  function animation() {
-    requestAnimationFrame(animation);
-    sky.rotation.x += 180/Math.PI * 0.000001;
-    sky.rotation.y += 180/Math.PI * 0.000001;
-    game.render();
-  };
+  // function animation() {
+  //   requestAnimationFrame(animation);
+  //   sky.rotation.x += 180/Math.PI * 0.000001;
+  //   sky.rotation.y += 180/Math.PI * 0.000001;
+  //   game.render();
+  // };
   
   return sky;
 };

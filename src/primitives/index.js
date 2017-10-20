@@ -9,7 +9,7 @@ const loadPrimitives = (game) => {
   game.scene.background = new game.THREE.Color( 0x000000 );
 
   Sky(game);
-  Light(game);
+  // Light(game);
   Cube(game);
   // Floor(game);
 
