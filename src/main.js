@@ -1,43 +1,44 @@
-import './assets/app.scss';
-
-import voxelEngine from 'voxel-engine';
-import voxelDebug from 'voxel-debug';
-
-
+import Vue from 'vue';
+import App from './components/App.vue';
+import firebase from 'firebase';
 import User from './user.js';
-import socket from './socket.js';
-import _ from 'lodash';
-import { color } from 'config/voxelStore.js';
+import auth from './auth.js';
+import createGame from './game.js';
+import store from 'store';
+
+window.store = store; // debug
+
+import './assets/css/app.scss';
+
+const initApp = () => {	
+	auth();
+
+	store.section('loader').show();
+	store.section('sign-in').hide();
+	store.section('app').hide();
+
+	firebase.auth().onAuthStateChanged((user) => {
+		if (user) {
+			store.user = new User(user);
+			store.section('app').show();
+			store.section('loader').hide();
+
+			store.game = createGame();
+			store.section('sign-in').hide();
+
+			new Vue({ el: '#control-panel', render: h => h(App) });
+		} else {
+			store.user = {};
+
+			store.destroy();
+			store.section('loader').hide();
+			store.section('app').hide();
+			store.section('sign-in').show();
+		}
+	}, function(error) {
+		console.log(error);
+	});
+};
 
 
-import controls from './controls.js';
-import config from 'config/config.js';
-import loadPrimitives from './primitives';
-
-let user;
-
-const createGame = () => {
-	const game = voxelEngine(config);
-	const container = document.getElementById('app');
-	loadPrimitives(game);
-	game.appendTo(container);
-	window.game = game; // for debugging
-
-	user = new User(game, 2, 7);
-	game.user = user;
-	// debug 
-  window.addEventListener('keydown', function (ev) {
-    if (ev.keyCode >= 48 & ev.keyCode <= 57) {
-    		user.color = _.toNumber(String.fromCharCode(ev.keyCode)) + 1;
-    		console.log('%c user.color ', `background: ${color[user.color - 1]}; color: #fff`);
-    };
- 	});
-
-	voxelDebug(game).close();
-	controls(game, user);
-
-	return game;
-}
-
-export default createGame;
-export { user };
+window.addEventListener('load', initApp);

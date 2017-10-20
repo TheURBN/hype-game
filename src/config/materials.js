@@ -1,12 +1,6 @@
-let voxelStore = {
-  items: [],
-};
-
-window.voxelStore = voxelStore;
-
 const color = [ 
-  '#000000', 
-  '#ffffff',
+  '#ffffff', 
+  '#000000',
   '#f44336',  // 3 red
   '#e91e63',  // 4 pink
   '#9c27b0',  // 5 purple
@@ -47,5 +41,4 @@ const color = [
 // 	'colored_black',
 // ]
 
-export default voxelStore;
-export { color };
+export default color;

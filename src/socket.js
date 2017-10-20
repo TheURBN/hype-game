@@ -1,29 +1,17 @@
 import config from 'config/config.js';
-import voxelStore from 'config/voxelStore.js';
-import createGame, { user } from './main.js';
 import _ from 'lodash';
 import { alert } from 'notie';
 import nanoid from 'nanoid';
-import Worker from './voxels.worker.js'
+import store from 'store';
 
-const worker = new Worker()
-const wsTimes = document.querySelector('#wsTime');
-let value = 0;
-
-worker.addEventListener('message', (event) => {
-  if (event.data.type = "complite") {
-    _.forEach(event.data.data, (val) => game.createBlock([val.x, val.z, val.y], val.owner));
-  }
-});
-
-let socket;
 
 async function loadVoxels(data) {
-  await worker.postMessage({type: 'range', data, voxelStore: voxelStore.items});
+  await _.forEach(data, (val) => store.game.createBlock([val.x, val.z, val.y], val.owner));
 }
 
 const start = () => {
-  socket = new WebSocket(config.ws.url);
+  const socket = new WebSocket(config.ws.url);
+  store.ws = socket;
   socket.onclose = () => setTimeout(start, 5000);
 
   socket.sendWs = (type = 'range', args) => {
@@ -38,7 +26,6 @@ const start = () => {
   };
 
   socket.onmessage = (res) => {
-    wsTimes.innerHTML = 'ws receive: ' + _.floor(value++);
     const data = JSON.parse(res.data);
     const error = _.get(data, 'error.message');
   
@@ -52,19 +39,14 @@ const start = () => {
 
     if (data.meta.type === 'update') {
       const voxel = data.data;
-      game.createBlock([voxel.x, voxel.z, voxel.y], voxel.owner);
+      store.game.createBlock([voxel.x, voxel.z, voxel.y], voxel.owner);
     }
 
     if (data.meta.type === 'range') loadVoxels(data.data);
   };
 
   socket.onopen = () => {
-    if (_.isUndefined(window.game)) {
-      createGame();
-      setTimeout(() => game.showAllChunks(), 500);
-    }
-
-    const userPositon = user.getPosition();
+    const userPositon = store.user.lastPosition;
     const range = config.ws.range;
 
     socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
@@ -72,9 +54,9 @@ const start = () => {
       socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
     }, 5000)
   }
+
+  return socket;
 }
 
-start();
 
-
-export default socket;
+export default start;

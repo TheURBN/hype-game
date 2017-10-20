@@ -44,6 +44,7 @@ module.exports = {
   resolve: {
     alias: {
       'config': '../src/config/',
+      'store': '../src/store/gameStore.js',
     }
   },
   devServer: {

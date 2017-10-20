@@ -2,11 +2,11 @@ const light = (game) => {
   const THREE = game.THREE;
   const scene = game.scene;
 
-  // var light = new THREE.DirectionalLight( 0xaabbff, 0.3 );
-  // light.position.x = 0;
-  // light.position.y = 0;
-  // light.position.z = 0;
-  // game.addItem( light );
+  var light = new THREE.PointLight( 0xff0000, 1, 100 );
+  light.position.set(540, 20, 522);
+  scene.add( light );
+
+  game.render();
 }
 
 
