@@ -63,7 +63,10 @@ module.exports = {
       inject: true
     }),
     new ExtractTextPlugin('main.css', { allChunks: true }),
-    new CopyWebpackPlugin([{ from: 'src/assets/textures', to: 'textures' }]),
+    new CopyWebpackPlugin([
+      { from: 'src/assets/textures', to: 'textures' },
+      { from: 'src/assets/img', to: 'img' }
+    ]),
   ],
 }
 

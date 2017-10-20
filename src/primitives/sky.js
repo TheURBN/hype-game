@@ -5,7 +5,7 @@ const sky = (game) => {
   const material = new THREE.MeshPhongMaterial();
   const sky = new THREE.Mesh(skySphere, material);
 
-  material.map = THREE.ImageUtils.loadTexture("dist/textures/space4.png");
+  material.map = THREE.ImageUtils.loadTexture("dist/textures/space.png");
   material.side = THREE.BackSide;
   material.fog = false;
 
