@@ -5,13 +5,16 @@ const sky = (game) => {
   const material = new THREE.MeshPhongMaterial();
   const sky = new THREE.Mesh(skySphere, material);
 
-  material.map = THREE.ImageUtils.loadTexture("dist/textures/space.png");
+  material.map = THREE.ImageUtils.loadTexture("dist/textures/space.jpg");
   material.side = THREE.BackSide;
   material.fog = false;
 
   sky.position.set(500, 0, 500);
   game.addItem({ mesh: sky });
   game.view.camera.far = 100000;
+  sky.rotation.y = 3
+  sky.rotation.x = 1.6
+
   game.render();
 
   // animation();

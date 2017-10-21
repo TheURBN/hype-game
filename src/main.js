@@ -30,7 +30,6 @@ const initApp = () => {
 		} else {
 			store.user = {};
 
-			store.destroy();
 			store.section('loader').hide();
 			store.section('app').hide();
 			store.section('sign-in').show();

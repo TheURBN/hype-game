@@ -12,7 +12,7 @@ import loadPrimitives from './primitives';
 
 const initGame = () => {
   const game = voxelEngine(config.game);
-  const container = document.getElementById('app');
+  const container = document.getElementById('game');
 
   loadPrimitives(game);
   store.user.init(game);

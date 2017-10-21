@@ -6,7 +6,7 @@ import Floor from './floor.js';
 
 const loadPrimitives = (game) => {
   game.primitives = {};
-  game.scene.background = new game.THREE.Color( 0x000000 );
+  game.scene.background = new game.THREE.Color(0x000000);
 
   Sky(game);
   // Light(game);

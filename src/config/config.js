@@ -9,7 +9,7 @@ const ws = {
 const game = {
   chunkDistance: 4,
   removeDistance: 20,
-  generate: (x, y, z) => y === 0,
+  generate: (x, y, z) => y === -1,
   materials: color,
   materialFlatColor: true,
   // texturePath: './dist/textures/blocks/', 

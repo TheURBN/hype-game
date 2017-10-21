@@ -1,12 +1,13 @@
+import THREE from 'three';
+
 const light = (game) => {
-  const THREE = game.THREE;
   const scene = game.scene;
 
-  var light = new THREE.PointLight( 0xff0000, 1, 100 );
-  light.position.set(540, 20, 522);
-  scene.add( light );
+  // var light = new THREE.PointLight( 0xff0000, 1, 100 );
+  // light.position.set(540, 20, 522);
+  // scene.add( light );
 
-  game.render();
+  // game.render();
 }
 
 

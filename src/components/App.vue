@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     logout() {
-      return firebase.auth().signOut();
+      return firebase.auth().signOut().then(() => {
+        window.location.href=window.location.href;
+      });
     },
     mouseOver() {
       this.active = false;   

@@ -1,6 +1,6 @@
 const color = [ 
-  '#ffffff', 
-  '#000000',
+  '#000000', 
+  '#ffffff',
   '#f44336',  // 3 red
   '#e91e63',  // 4 pink
   '#9c27b0',  // 5 purple
