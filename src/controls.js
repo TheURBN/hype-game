@@ -20,13 +20,15 @@ const controls = (game, user) => {
   game.chunkRegion.on('change', (pos) => {
     const userPositon = user.getPosition();
     const range = config.ws.range;
+    const gameRange = 50;
     const paddingX = Math.abs(user.lastPosition.x - userPositon.x);
     const paddingZ = Math.abs(user.lastPosition.z - userPositon.z);
 
     if (!user.start) store.ws.sendWs('range', { x: userPositon.x, y: userPositon.z, range }); user.start = true;
 
-    if (paddingX >= game.chunkSize || paddingZ >= game.chunkSize) {
+    if (paddingX >= gameRange || paddingZ >= gameRange) {
       user.lastPosition = userPositon;
+      config.ws.range = 70;
       store.ws.sendWs('range', { x: userPositon.x, y: userPositon.z, range });
     };
   });
@@ -35,7 +37,7 @@ const controls = (game, user) => {
 
     const position = blockPosPlace;
 
-    if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > 0) && game.canCreateBlock(position)) {
+    if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > -1) && game.canCreateBlock(position)) {
       const [x, z, y] = position;
 
       store.ws.sendWs('update', { x, y, z, owner: user.color });

@@ -21,7 +21,6 @@ const game = {
   mesher: voxel.meshers.greedy,
   controls: {
     discreteFire: true,
-    airControl: false,
   },
 }
 
