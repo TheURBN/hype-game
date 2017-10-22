@@ -15,7 +15,7 @@ const game = {
   // texturePath: './dist/textures/blocks/', 
   worldOrigin: [500, 10, 500],
   worldSize: [1000, 100, 1000],
-  startingPosition: [500, 30, 500],
+  startingPosition: [500, 5, 500],
   skyColor: '0x000000',
   playerHeight: 2,
   mesher: voxel.meshers.greedy,
@@ -27,6 +27,7 @@ const game = {
 const options = {
   game,
   ws,
+  side: 1000,
   worldSize: [1000, 100, 1000],
 }
 

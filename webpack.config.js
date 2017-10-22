@@ -34,6 +34,15 @@ module.exports = {
         }
       },
       {
+        test: /\.glsl$/,
+        loader: 'shader-loader',
+        options: {
+          glsl: {
+            chunkPath: path.resolve('src/shaders/chunks'),
+          },
+        },
+      },
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           use: 'css-loader!csso-loader!sass-loader',

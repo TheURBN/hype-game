@@ -7,7 +7,7 @@ import _ from 'lodash';
 
 
 class User {
-  constructor(user, position = { x: 500, y: 10, z: 500 }, color = _.random(2, colors.length)) {
+  constructor(user, position = { x: 500, y: 5, z: 500 }, color = _.random(2, colors.length)) {
     this.name = user.displayName;
     this.email = user.email;
     this.id = user.uid;
@@ -28,7 +28,7 @@ class User {
     if(this.admin) voxelDebug(game).close();
   }
 
-  setPosition(x = 500, y = 10, z = 500) {
+  setPosition(x = 500, y = 5, z = 500) {
     this.avatar.yaw.position.set(x, y, z);
   }
 

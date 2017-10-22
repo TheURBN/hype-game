@@ -49,10 +49,7 @@ const start = () => {
     const userPositon = store.user.lastPosition;
     const range = config.ws.range;
 
-    socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
-    setTimeout(() => {
-      socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range }));
-    }, 5000)
+    socket.send(socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range: range * 2 }));
   }
 
   return socket;
