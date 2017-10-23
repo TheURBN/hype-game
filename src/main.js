@@ -19,13 +19,15 @@ const initApp = () => {
 
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
+			console.log(user);
 			store.user = new User(user);
 			store.section('app').show();
-			store.section('loader').hide();
 
 			store.game = createGame();
 			store.section('sign-in').hide();
-
+			store.section('loader').hide();
+			store.section('sign-in').remove();
+			store.section('loader').remove();
 			new Vue({ el: '#control-panel', render: h => h(App) });
 		} else {
 			store.user = {};

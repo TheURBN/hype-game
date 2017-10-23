@@ -7,6 +7,8 @@ $notie-color-neutral: #A0A0A0;
 @import "./reset.css";
 @import "./loading.scss";
 @import '../../../node_modules/notie/src/notie.scss';
+@import './firebase.scss';
+
 
 html, body {
   font-family: 'Roboto', sans-serif;  
@@ -65,12 +67,25 @@ body {
 }
 
 .sign-in {
+  flex-direction: column;
+
   h1 {
     text-align: center;
     color: white;
     font-size: 60px;
-    margin-top: -10px;
     display: block;
+  }
+
+  h2 {
+    text-align: center;
+    color: white;
+    font-size: 42px;
+    line-height: 1.5;
+    display: block;
+  }
+
+  .loaders {
+    position: absolute;
   }
 }
 

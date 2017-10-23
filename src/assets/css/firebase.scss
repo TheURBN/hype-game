@@ -1,0 +1,43 @@
+#firebaseui-auth-container {
+  background: #353537;
+  position: relative;
+  width: 550px;
+  height: 240px;
+  z-index: 20;
+  
+  .firebaseui-container {
+    max-width: 550px;
+    background: #353537;
+  }
+
+  .firebaseui-busy-indicator {
+    height: 10px;
+    margin-top: 30px;
+  }
+  
+  .firebaseui-idp-list {
+    text-align: center;
+
+      &>.firebaseui-list-item {
+      display: inline-block;
+      width: 100px;
+
+      .firebaseui-idp-text {
+        display: none !important;
+      }
+
+      .firebaseui-idp-button {
+        width: 64px;
+        height: 64px;
+      }
+
+      .firebaseui-idp-icon {
+        border: none;
+        display: inline-block;
+        height: 32px;
+        vertical-align: middle;
+        width: 32px;
+      }
+    }
+  }
+}
