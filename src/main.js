@@ -19,7 +19,6 @@ const initApp = () => {
 
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
-			console.log(user);
 			store.user = new User(user);
 			store.section('app').show();
 

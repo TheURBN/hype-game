@@ -59,7 +59,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    port: 5000,
+    port: process.env.PORT || 5000,
   },
   performance: {
     hints: false
@@ -74,7 +74,8 @@ module.exports = {
     new ExtractTextPlugin('main.css', { allChunks: true }),
     new CopyWebpackPlugin([
       { from: 'src/assets/textures', to: 'textures' },
-      { from: 'src/assets/img', to: 'img' }
+      { from: 'src/assets/img', to: 'img' },
+      { from: 'favicon.ico' }
     ]),
   ],
 }
