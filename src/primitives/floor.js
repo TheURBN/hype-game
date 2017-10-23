@@ -28,7 +28,7 @@ const floor = (game) => {
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(config.side, config.side);
 
-  const geometry = new THREE.PlaneGeometry(config.side, config.side, config.side);
+  const geometry = new THREE.PlaneGeometry(config.side, config.side, 1);
   const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
 
   const plane = new THREE.Mesh( geometry, material );

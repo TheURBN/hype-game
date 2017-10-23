@@ -1,7 +1,10 @@
+import config from '../config/config.js';
+
+
 const sky = (game) => {
   const THREE = game.THREE;
   
-  const skySphere = new THREE.SphereGeometry(1000, 15, 15);
+  const skySphere = new THREE.SphereGeometry(config.side, 15, 15);
   const material = new THREE.MeshPhongMaterial();
   const sky = new THREE.Mesh(skySphere, material);
 
@@ -9,7 +12,7 @@ const sky = (game) => {
   material.side = THREE.BackSide;
   material.fog = false;
 
-  sky.position.set(500, 0, 500);
+  sky.position.set(config.side / 2, 0, config.side / 2);
   game.addItem({ mesh: sky });
   game.view.camera.far = 100000;
   sky.rotation.y = 3

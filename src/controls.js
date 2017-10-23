@@ -10,7 +10,7 @@ const controls = (game, user) => {
   let blockPosPlace;
   const hl = game.highlighter = highlight(game, {
       color: 0xff0000,
-      distance: 4,
+      distance: 7,
       animate: true,
       animateFunction: (position, targetPosition) => {
         if (!position || !targetPosition) return;

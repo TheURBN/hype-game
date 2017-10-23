@@ -21,6 +21,11 @@ const game = {
   mesher: voxel.meshers.greedy,
   controls: {
     discreteFire: true,
+    airControl: false,
+    accelTimer: 10,
+    // jumpMaxTimer: 200,
+    jumpSpeed: 0.0004,
+    jumpSpeedMove: 0.0004,
   },
 }
 
