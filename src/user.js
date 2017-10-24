@@ -10,7 +10,7 @@ class User {
   constructor(user, position = { x: 500, y: 5, z: 500 }, color = 3) {
     this.name = user.displayName;
     this.email = user.email;
-    this.id = user.uid;
+    this.uid = user.uid;
     this.photo = user.photoURL;
     this.startPosition = position;
     this.lastPosition = position;
@@ -24,6 +24,7 @@ class User {
     game.gravity = [0, -0.000000006, 0]
     this.setPosition();
     this.removeBody();
+    this.makeFly(game);
     if(this.admin) voxelDebug(game).close();
   }
 
