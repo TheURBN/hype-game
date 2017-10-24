@@ -3,10 +3,15 @@ import _ from 'lodash';
 import { alert } from 'notie';
 import nanoid from 'nanoid';
 import store from 'store';
+import delay from 'nanodelay';
 
 
 async function loadVoxels(data) {
-  await _.forEach(data, (val) => store.game.createBlock([val.x, val.z, val.y], val.owner));
+  if (_.isArray(data)) {
+    await _.forEach(data, (val) => store.game.createBlock([val.x, val.z, val.y], val.owner));
+  } else {
+    await store.game.createBlock([data.x, data.z, data.y], data.owner)
+  }
 }
 
 const start = () => {
@@ -30,6 +35,8 @@ const start = () => {
     const error = _.get(data, 'error.message');
   
     if (!_.isUndefined(error)) {
+      if(data.conflict) loadVoxels(data.conflict);
+
       return alert({
         type: 'error',
         text: error,
@@ -37,12 +44,12 @@ const start = () => {
       });
     }
 
-    if (data.meta.type === 'update') {
-      const voxel = data.data;
-      store.game.createBlock([voxel.x, voxel.z, voxel.y], voxel.owner);
+    if (data.meta.type === 'update' || data.meta.type === 'range') {
+      loadVoxels(data.data).then(() => {
+  
+        if (store.firstLoad.get()) return delay(2000).then(() => store.firstLoad.set(false));
+      });
     }
-
-    if (data.meta.type === 'range') loadVoxels(data.data);
   };
 
   socket.onopen = () => {

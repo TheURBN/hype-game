@@ -7,15 +7,14 @@ import _ from 'lodash';
 
 
 class User {
-  constructor(user, position = { x: 500, y: 5, z: 500 }, color = _.random(2, colors.length)) {
+  constructor(user, position = { x: 500, y: 5, z: 500 }, color = 3) {
     this.name = user.displayName;
     this.email = user.email;
     this.id = user.uid;
-    this.token = user.getIdToken();
     this.photo = user.photoURL;
     this.startPosition = position;
     this.lastPosition = position;
-    this.color = color + 1;
+    this.color = color;
     this.admin = user.email === 'ruscheglov@gmail.com';
   }
 

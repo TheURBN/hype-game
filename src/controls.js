@@ -32,7 +32,7 @@ const controls = (game, user) => {
   game.chunkRegion.on('change', (pos) => {
     const userPositon = user.getPosition();
     const range = config.ws.range;
-    const gameRange = 50;
+    const gameRange = config.ws.range / 2;
     const paddingX = Math.abs(user.lastPosition.x - userPositon.x);
     const paddingZ = Math.abs(user.lastPosition.z - userPositon.z);
 
@@ -50,7 +50,7 @@ const controls = (game, user) => {
     if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > -1) && game.canCreateBlock(position)) {
       const [x, z, y] = position;
 
-      store.ws.sendWs('update', { x, y, z, owner: user.color });
+      store.ws.sendWs('update', { x, y, z, owner: store.user.id });
     } else {
       if (position) alert({ type: 'warning', text: 'Voxel cannot be created at this position', position: 'bottom' });
     }

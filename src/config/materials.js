@@ -22,23 +22,5 @@ const color = [
   '#607d8b',  // 21 Blue Grey
 ];
 
-// const color = [
-//   'colored_silver',
-// 	'colored_blue',
-// 	'colored_brown',
-// 	'colored_cyan',
-// 	'colored_gray',
-// 	'colored_green',
-// 	'colored_light_blue',
-// 	'colored_lime',
-// 	'colored_magenta',
-// 	'colored_orange',
-// 	'colored_pink',
-// 	'colored_purple',
-// 	'colored_red',
-// 	'colored_silver',
-// 	'colored_white',
-// 	'colored_black',
-// ]
 
 export default color;
