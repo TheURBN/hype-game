@@ -10,7 +10,7 @@ const ws = {
 
 const game = {
   chunkDistance: 4,
-  removeDistance: 20,
+  removeDistance: 16,
   generate: (x, y, z) => y === -1,
   materials: store.colors || color,
   materialFlatColor: true,
