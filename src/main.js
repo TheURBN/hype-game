@@ -3,14 +3,16 @@ import App from './components/App.vue';
 import firebase from 'firebase';
 import User from './user.js';
 import auth from './auth.js';
-import createGame from './game.js';
+import Game from './game.js';
 import store from 'store';
+import mobx from 'mobx';
+
 
 window.store = store; // debug
 
 import './assets/css/app.scss';
 
-const initApp = () => {	
+async function initApp() {	
 	auth();
 
 	store.section('loader').show();
@@ -20,13 +22,9 @@ const initApp = () => {
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
 			store.user = new User(user);
-			store.section('app').show();
+			store.game = Game();
+			console.log(user.uid);
 
-			store.game = createGame();
-			store.section('sign-in').hide();
-			store.section('loader').hide();
-			store.section('sign-in').remove();
-			store.section('loader').remove();
 			new Vue({ el: '#control-panel', render: h => h(App) });
 		} else {
 			store.user = {};

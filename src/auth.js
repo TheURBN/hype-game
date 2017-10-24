@@ -9,7 +9,6 @@ const uiConfig = {
     signInSuccess: function(currentUser, credential, redirectUrl) {
       store.section('loader').show();
       store.section('sign-in').hide();
-      console.log('show');
 
       alert({
         type: 'success',
@@ -18,9 +17,6 @@ const uiConfig = {
       });
 
       return true;
-    },
-    uiShown: () => {
-      console.log('load');
     },
   },
   signInOptions: [

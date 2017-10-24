@@ -1,5 +1,7 @@
 import color from './materials.js'; 
 import voxel from 'voxel';
+import store from '../store/gameStore.js';
+
 
 const ws = {
   url: 'wss://turg-svc.herokuapp.com/v1/ws/',
@@ -10,7 +12,7 @@ const game = {
   chunkDistance: 4,
   removeDistance: 20,
   generate: (x, y, z) => y === -1,
-  materials: color,
+  materials: store.colors || color,
   materialFlatColor: true,
   // texturePath: './dist/textures/blocks/', 
   worldOrigin: [500, 10, 500],
@@ -21,11 +23,6 @@ const game = {
   mesher: voxel.meshers.greedy,
   controls: {
     discreteFire: true,
-    airControl: false,
-    accelTimer: 10,
-    // jumpMaxTimer: 200,
-    jumpSpeed: 0.0004,
-    jumpSpeedMove: 0.0004,
   },
 }
 
