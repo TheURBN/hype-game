@@ -21,7 +21,6 @@ class User {
   init(game) {
     this.avatar = player(game)();
     this.avatar.possess();
-    game.gravity = [0, -0.000000006, 0]
     this.setPosition();
     this.removeBody();
     this.makeFly(game);

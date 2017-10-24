@@ -9,6 +9,7 @@ class GameStore {
     this.ws = {};
     this.auth = {};
     this.colors = material;
+    this.flags = mobx.observable([]);
     this.firstLoad = mobx.observable(true);
 
     mobx.autorun(() => {

@@ -8,7 +8,11 @@ import delay from 'nanodelay';
 
 async function loadVoxels(data) {
   if (_.isArray(data)) {
-    await _.forEach(data, (val) => store.game.createBlock([val.x, val.z, val.y], val.owner));
+    await _.forEach(data, (val) => {
+      if (val.capturable) store.flags.push(val);
+
+      store.game.createBlock([val.x, val.z, val.y], val.owner)
+    });
   } else {
     await store.game.createBlock([data.x, data.z, data.y], data.owner)
   }
