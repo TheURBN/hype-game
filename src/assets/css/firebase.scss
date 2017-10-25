@@ -1,13 +1,29 @@
 #firebaseui-auth-container {
-  background: #353537;
+  background: $backgorund;
   position: relative;
   width: 550px;
   height: 240px;
   z-index: 20;
+
+  .firebaseui-card-header {
+    display: none;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .firebaseui-text {
+    color: #fff;
+  }
+  
+  .firebaseui-form-actions {
+    text-align: center;
+  }
   
   .firebaseui-container {
     max-width: 550px;
-    background: #353537;
+    background: $backgorund;
     box-shadow: none;
   }
 

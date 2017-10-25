@@ -1,15 +1,18 @@
-import config from 'config/config.js';
 import _ from 'lodash';
 import { alert } from 'notie';
 import nanoid from 'nanoid';
-import store from 'store';
 import delay from 'nanodelay';
+
+
+import Flag from './store/flagStore.js';
+import config from 'config/config.js';
+import store from 'store';
 
 
 async function loadVoxels(data) {
   if (_.isArray(data)) {
     await _.forEach(data, (val) => {
-      if (val.capturable) store.flags.push(val);
+      if (val.capturable) store.flags.push(new Flag(val));
 
       store.game.createBlock([val.x, val.z, val.y], val.owner)
     });
@@ -39,7 +42,7 @@ const start = () => {
     const error = _.get(data, 'error.message');
   
     if (!_.isUndefined(error)) {
-      if(data.conflict) loadVoxels(data.conflict);
+      if (data.error.conflict) loadVoxels(data.error.conflict);
 
       return alert({
         type: 'error',

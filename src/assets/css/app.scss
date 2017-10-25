@@ -3,6 +3,7 @@ $notie-color-warning: #D6A14D;
 $notie-color-error: #E1715B;
 $notie-color-info: #4D82D6;
 $notie-color-neutral: #A0A0A0;
+$backgorund: #353535;
 
 @import "./reset.css";
 @import "./loading.scss";
@@ -63,7 +64,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #353535;
+  background: $backgorund;
 }
 
 .sign-in {
