@@ -6,7 +6,6 @@ import Sky from './sky.js';
 import Light from './light.js';
 import Cube from './cube.js';
 import Floor from './floor.js';
-import Flag from './flag.js';
 
 
 const loadPrimitives = (game) => {
@@ -19,12 +18,12 @@ const loadPrimitives = (game) => {
   // Flag(game);
 
   game.render();
-  mobx.autorun(() => {
-    _.forEach(store.flags, (val) => {
-      const flag = new Flag(game, { x: val.x, y: val.y, z: val.z });
-      window.flag = flag;
-    });
-  });
+  // mobx.autorun(() => {
+  //   _.forEach(store.flags, (val) => {
+  //     const flag = new Flag(game, { x: val.x, y: val.y, z: val.z });
+  //     window.flag = flag;
+  //   });
+  // });
 
   return game.primitives;
 };

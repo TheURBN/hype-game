@@ -10,7 +10,7 @@ const controls = (game, user) => {
   let blockPosPlace;
   const hl = game.highlighter = highlight(game, {
       color: 0xff0000,
-      distance: 7,
+      distance: 4,
       animate: true,
       animateFunction: (position, targetPosition) => {
         if (!position || !targetPosition) return;
@@ -23,10 +23,15 @@ const controls = (game, user) => {
 
         return position;
       },
-      adjacentActive: () => true,
+      adjacentActive: () => {
+        if (_.find(store.flags, { position: game.highlighter.currVoxelPos })) return false;
+
+        return true;
+      },
   })
 
   hl.on('remove-adjacent', () => blockPosPlace = null);
+  hl.on('highlight', (voxel) => blockPosPlace = voxel);
   hl.on('highlight-adjacent', (voxel) => blockPosPlace = voxel);
   
   game.chunkRegion.on('change', (pos) => {
@@ -37,20 +42,20 @@ const controls = (game, user) => {
     const paddingZ = Math.abs(user.lastPosition.z - userPositon.z);
 
     if (paddingX >= gameRange || paddingZ >= gameRange) {
-      user.lastPosition = userPositon;
+      user.lastPosition = user.getPosition();
       config.ws.range = 70;
       store.ws.sendWs('range', { x: userPositon.x, y: userPositon.z, range });
     };
   });
 
   game.on('fire', (target, state) => {
-
     const position = blockPosPlace;
 
     if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > -1) && game.canCreateBlock(position)) {
       const [x, z, y] = position;
 
-      store.ws.sendWs('update', { x, y, z, owner: store.user.id });
+      // store.ws.sendWs('update', { x, y, z, owner: store.user.id });
+      store.ws.sendWs('update', { x, y, z, owner: 3 });
     } else {
       if (position) alert({ type: 'warning', text: 'Voxel cannot be created at this position', position: 'bottom' });
     }

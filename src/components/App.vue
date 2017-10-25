@@ -8,6 +8,10 @@
           <span>Your color:</span>
           <span class="user-panel--cube" v-bind:style="{ backgroundColor: userColor }"></span>
         </div>
+        <div class="user-panel--flag">
+          <span class="flag">🚩🚩🚩</span>
+          <span class="count">x {{ count }}</span>
+        </div>
       </div>
       <div class="user-panel user-logout" v-if="!active">
         <button class="user-logout--button" v-on:click="logout">Logout</button>
@@ -21,18 +25,23 @@ import store from '../store/gameStore.js';
 import colors from '../config/materials.js';
 import firebase from 'firebase';
 
+
 export default {
   name: 'app',
   data () {
     return {
       user: store.user,
       active: true,
+      count: 0,
     }
   },
   computed: {
     userColor() {
       return colors[store.user.color - 1];
-    }
+    },
+  },
+  mounted() {
+    setInterval(() => this.count = ++this.count, 100);
   },
   updated() {
     this.user = store.user;
@@ -63,6 +72,7 @@ export default {
     border-radius: 5px;
   }
 
+
   .user-toolbar {
     min-width: 150px;
     img {
@@ -91,6 +101,18 @@ export default {
         padding: 4px 0;
         font-size: 12px;
         color: #737373;
+      }
+      
+      &--flag {
+        padding: 5px 0;
+        .flag {
+          font-size: 10px;
+          letter-spacing: 6px;
+        }
+
+        .count {
+          padding-left: 4px;
+        }
       }
 
       &--cube {
