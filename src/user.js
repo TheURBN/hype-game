@@ -1,6 +1,5 @@
 import player from 'voxel-player';
 import fly from 'voxel-fly';
-import voxelDebug from 'voxel-debug';
 import colors from 'config/materials.js';
 import _ from 'lodash';
 
@@ -24,7 +23,6 @@ class User {
     this.setPosition();
     this.removeBody();
     this.makeFly(game);
-    if(this.admin) voxelDebug(game).close();
   }
 
   setPosition(x = 500, y = 5, z = 500) {

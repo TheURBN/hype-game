@@ -5,6 +5,7 @@ import store from '../store/gameStore.js';
 
 const ws = {
   url: 'wss://turg-svc.herokuapp.com/v1/ws/',
+  rest: 'http://turg-svc.herokuapp.com/v1/',
   range: 100,
 }
 
