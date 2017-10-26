@@ -52,14 +52,20 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'config': '../src/config/',
-      'store': '../src/store/gameStore.js',
+      'config': path.resolve(__dirname, 'src/config/'),
+      'store': path.resolve(__dirname, 'src/store/gameStore.js'),
     }
   },
   devServer: {
     historyApiFallback: true,
     noInfo: true,
     port: process.env.PORT || 5000,
+    proxy: {
+      '/v1': {
+        target: 'http://turg-svc.herokuapp.com',
+        changeOrigin: true,
+      },
+    },
   },
   performance: {
     hints: false
