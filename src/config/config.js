@@ -23,7 +23,7 @@ const game = {
 const options = {
   game,
   ws: 'wss://turg-svc.herokuapp.com/v1/ws/',
-  url: 'https://turg-svc.herokuapp.com/v1/',
+  url: process.env.NODE_ENV === 'production' ? 'https://turg-svc.herokuapp.com/' : 'http://localhost:5000',
   range: 100,
   side: 1000,
   worldSize: [1000, 100, 1000],

@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     fetchData(url, options = {}) {
-      return fetch(`v1/${url}/`, options)
+      return fetch(`${config.url}/v1/${url}/`, options)
         .then(res => res.json())
         .then(this.updateLeaders);
     },
