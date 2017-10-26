@@ -60,6 +60,12 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     port: process.env.PORT || 5000,
+    proxy: {
+      '/v1': {
+        target: 'http://turg-svc.herokuapp.com',
+        changeOrigin: true,
+      },
+    },
   },
   performance: {
     hints: false
