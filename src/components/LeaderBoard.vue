@@ -1,5 +1,5 @@
 <template>
-  <div class="leaderboard">
+  <div class="leaderboard" v-if="users.length">
     <h2>Leaderboard</h2>
     <ul class="leaderboard--users">
       <li class="leader" v-for="(item, index) in users">
@@ -41,7 +41,7 @@ export default {
         .map((value, key) => {
           value.time = _.floor(value.time);
           value.class = `leader-index-${key + 1}`;
-          value.color = store.colors[value.owner];
+          value.color = store.materials[value.owner];
         
           return value;
         }).value();
@@ -65,6 +65,7 @@ export default {
     
     h2 {
       text-align: center;
+      text-shadow: 0.5px 0.5px 0px #000;
     }
 
     .leader {

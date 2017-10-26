@@ -1,10 +1,17 @@
 import _ from 'lodash';
-
+import store from 'store';
 
 onmessage = (e) => {
-  if (e.data.type === 'range') {
-    const data = _.filter(e.data.data, (val) => !_.includes(e.data.voxelStore, val));
-
-    postMessage({type: 'complite', data});
+  console.log(e.data, store);
+  if (e.data.voxels) {
+    const voxels = _.isArray(e.data.voxels) ? e.data.voxels : [e.data.voxels];
+    const data = _.map(voxels, (val) => {
+      if (_.isString(val.owner)) {
+        if (!_.includes(store.materials, val.owner)) {
+          store.materials.push('1');
+          postMessage({type: 'addColor', data: val.owner });
+        };
+      }
+    });
   }
 }

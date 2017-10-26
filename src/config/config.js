@@ -2,13 +2,6 @@ import color from './materials.js';
 import voxel from 'voxel';
 import store from '../store/gameStore.js';
 
-
-const ws = {
-  url: 'wss://turg-svc.herokuapp.com/v1/ws/',
-  rest: 'http://turg-svc.herokuapp.com/v1/',
-  range: 100,
-}
-
 const game = {
   chunkDistance: 4,
   removeDistance: 16,
@@ -29,7 +22,9 @@ const game = {
 
 const options = {
   game,
-  ws,
+  ws: 'wss://turg-svc.herokuapp.com/v1/ws/',
+  url: 'https://turg-svc.herokuapp.com/v1/',
+  range: 100,
   side: 1000,
   worldSize: [1000, 100, 1000],
 }

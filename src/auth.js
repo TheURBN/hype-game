@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
-import { alert } from 'notie';
 import store from 'store';
 
 
@@ -9,12 +8,6 @@ const uiConfig = {
     signInSuccess: function(currentUser, credential, redirectUrl) {
       store.section('loader').show();
       store.section('sign-in').hide();
-
-      alert({
-        type: 'success',
-        text: 'You success autroization',
-        position: 'bottom',
-      });
 
       return true;
     },
@@ -38,7 +31,6 @@ const config = {
 };
 
 const init = () => {
-  // init firebase app;
   store.firebase = firebase.initializeApp(config);
   const ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', uiConfig);

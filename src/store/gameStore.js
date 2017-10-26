@@ -4,11 +4,11 @@ import material from '../config/materials.js';
 
 class GameStore {
   constructor() {
-    this.game = {};
-    this.user = {};
-    this.ws = {};
-    this.auth = {};
-    this.colors = material;
+    this.game = null;
+    this.user = null;
+    this.ws = null;
+    this.auth = null;
+    this.materials = material;
     this.flags = mobx.observable([]);
     this.firstLoad = mobx.observable(true);
 

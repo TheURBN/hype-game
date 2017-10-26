@@ -3,7 +3,6 @@ import voxelEngine from 'voxel-engine';
 import config from 'config/config.js';
 import color from 'config/materials.js';
 import controlInit from './controls.js';
-import socketInit from './socket.js';
 import store from 'store';
 
 
@@ -18,7 +17,6 @@ const initGame = () => {
   loadPrimitives(game);
   store.user.init(game);
 
-  socketInit();
   controlInit(game, store.user);
 
   game.appendTo(container);
