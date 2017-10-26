@@ -1,16 +1,24 @@
-import Vue from 'vue';
-import App from './components/App.vue';
+import { alert } from 'notie';
 import firebase from 'firebase';
-import User from './user.js';
 import auth from './auth.js';
-import Game from './game.js';
+import User from './user.js';
 import store from 'store';
-import mobx from 'mobx';
-
-
-window.store = store; // debug
-
+import config from 'config/config.js';
+import connectGame from './connect.js';
 import './assets/css/app.scss';
+
+window.store = store; // debu
+
+const errorHandeler = (error) => {
+	store.user = {};
+
+	store.section('loader').hide();
+	store.section('app').hide();
+	store.section('sign-in').show();
+
+	if (error) alert({ type: 'error',	text: error, position: 'bottom' });
+};
+
 
 async function initApp() {	
 	auth();
@@ -22,20 +30,12 @@ async function initApp() {
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
 			store.user = new User(user);
-			store.game = Game();
-			console.log(user.uid);
 
-			new Vue({ el: '#control-panel', render: h => h(App) });
-		} else {
-			store.user = {};
-
-			store.section('loader').hide();
-			store.section('app').hide();
-			store.section('sign-in').show();
+			return connectGame(user);
 		}
-	}, function(error) {
-		console.log(error);
-	});
+
+		return errorHandeler();
+	}, (error) => errorHandeler(error));
 };
 
 

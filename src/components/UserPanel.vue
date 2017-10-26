@@ -6,7 +6,7 @@
         <h2>{{ user.name }}</h2>
         <div class="user-panel--color">
           <span>Your color:</span>
-          <span class="user-panel--cube" v-bind:style="{ backgroundColor: userColor }"></span>
+          <span class="user-panel--cube" v-bind:style="{ backgroundColor: user.color }"></span>
         </div>
       </div>
       <div class="user-panel user-logout" v-if="!active">
@@ -28,11 +28,6 @@ export default {
       user: store.user,
       active: true,
     }
-  },
-  computed: {
-    userColor() {
-      return colors[store.user.color - 1];
-    },
   },
   updated() {
     this.user = store.user;
@@ -65,7 +60,8 @@ export default {
 
 
   .user-toolbar {
-    min-width: 150px;
+    min-height: 58px;
+    min-width: 190px;
     img {
       width: 35px;
       height: 35px;
@@ -78,9 +74,10 @@ export default {
       &--button{
         background: #fff;
         border: 1px solid #01040e;
-        padding: 5px 10px;
+        padding: 6px 16px;
         border-radius: 0;
         margin: 4px 5px;
+        font-size: 12px;
       }
     }
 

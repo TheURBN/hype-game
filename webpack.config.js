@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+
 module.exports = {
   entry: ['babel-polyfill', './src/main.js'],
   output: {
@@ -62,7 +63,7 @@ module.exports = {
     port: process.env.PORT || 5000,
     proxy: {
       '/v1': {
-        target: 'http://turg-svc.herokuapp.com',
+        target: 'https://turg-svc.herokuapp.com',
         changeOrigin: true,
       },
     },
