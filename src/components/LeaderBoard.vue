@@ -6,7 +6,15 @@
         <div v-bind:class="item.class" v-bind:style="{ color: item.owner }">
           <span class="leader-number">#{{ index + 1 }}</span>
           <span class="leader-owner">owner: {{ item.owner }}</span>
-          <span class="leader-points">{{ item.time }}</span>
+          <span class="leader-points">
+            <i-count-up
+              :start="item.time"
+              :end="item.time"
+              :decimals="0"
+              :duration="3"
+              :options="options"
+            ></i-count-up>
+      </span>
         </div>
       </li>
     </transition-group>
@@ -19,10 +27,24 @@ import store from 'store';
 import _ from 'lodash';
 
 
+import ICountUp from 'vue-countup-v2';
+
+
 export default {
+  components: {
+    ICountUp
+  },
   data () {
     return {
       users: [],
+      options: {
+        useEasing: false,
+        useGrouping: false,
+        separator: ',',
+        decimal: '.',
+        prefix: '',
+        suffix: '',
+      },
     }
   },
   created() {

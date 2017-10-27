@@ -1,11 +1,19 @@
 <template>
-  <transition name="fade" mode="out-in">
+  <transition name="fade" mode="out-in" v-if="points">
     <div class="score capture-flag" v-if="showCapture" key="flag">
-      <h2>You capture the flag!</h2>
+      <h2>You have capture the flag!</h2>
     </div>
     <div class="score" v-else key="score">
       <div class="score-title">Your score: {{ flags.length }} 🏳️</div>
-      <div class="score-points">{{ points }}</div>
+      <div class="score-points">
+        <i-count-up
+          :start="points"
+          :end="points"
+          :decimals="0"
+          :duration="3"
+          :options="options"
+        ></i-count-up>
+      </div>
     </div>
   </transition>
 </template>
@@ -16,12 +24,25 @@ import store from 'store';
 import { observe } from 'mobx';
 import delay from 'nanodelay';
 
+import ICountUp from 'vue-countup-v2';
+
 
 export default {
+  components: {
+    ICountUp
+  },
   data() {
     return {
       showCapture: false,
       flags: store.user.flags,
+      options: {
+        useEasing: false,
+        useGrouping: false,
+        separator: ',',
+        decimal: '.',
+        prefix: '',
+        suffix: '',
+      },
     }
   },
   computed: {
