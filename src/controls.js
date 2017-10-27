@@ -24,7 +24,11 @@ const controls = (game, user) => {
         return position;
       },
       adjacentActive: () => {
-        if (_.find(store.flags, { position: game.highlighter.currVoxelPos })) return false;
+        if (_.find(store.flags, { position: game.highlighter.currVoxelPos })) {
+          blockPosPlace = game.highlighter.currVoxelPos;
+
+          return false;          
+        }
 
         return true;
       },
