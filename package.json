@@ -5,7 +5,7 @@
   "author": "Viktor Shcheglov <vscheglov@odin.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server -p --open --hot",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "start": "node server.js",
     "heroku-postbuild": "npm install && npm run build"

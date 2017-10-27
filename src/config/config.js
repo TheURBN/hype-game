@@ -1,12 +1,11 @@
 import color from './materials.js'; 
 import voxel from 'voxel';
-import store from '../store/gameStore.js';
 
 const game = {
   chunkDistance: 4,
   removeDistance: 16,
   generate: (x, y, z) => y === -1,
-  materials: store.colors || color,
+  materials: color,
   materialFlatColor: true,
   // texturePath: './dist/textures/blocks/', 
   worldOrigin: [500, 10, 500],

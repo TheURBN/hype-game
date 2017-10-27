@@ -1,15 +1,16 @@
 import config from '../config/config.js';
 
 class Flag {
-  constructor(game, position) {
-    this.object = this.createObject(game);
+  constructor(game, position, owner) {
+    this.THREE = game.THREE;
+    this.object = this.createObject(game, owner);
     this.position = this.setPosition(position);
 
     game.scene.add(this.object);
   }
 
-  createObject(game) {
-    const THREE = game.THREE;
+  createObject(game, owner) {
+    const THREE = this.THREE;
     const PI = Math.PI;
     const DEF_COLOR = 0x353535;
   
@@ -33,6 +34,8 @@ class Flag {
     flagGroup.add(flagPlane);
     this.flag = flagPlane;
 
+    if (owner) this.updateColor(owner);
+
     return flagGroup;
   }
 
@@ -41,6 +44,12 @@ class Flag {
 
     return pos;
   };
+
+  updateColor(owner) {
+    const flag = this.flag;
+    flag.material.wireframe = false;
+    flag.material.color = new this.THREE.Color(owner);
+  }
 }
 
 export default Flag;

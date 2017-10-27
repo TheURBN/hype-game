@@ -61,8 +61,8 @@ const connectGame = (user) => {
     return socketEngine[type](data);
   });
 
-	socket.addEventListener('close', () => setTimeout(() => connectGame(store.user), 2000));
-	socket.addEventListener('open', () => {
+  socket.addEventListener('close', () => setTimeout(() => connectGame(store.user), 2000));
+  socket.addEventListener('open', () => {
     const userPositon = store.user.lastPosition;
     const range = config.range;
 
