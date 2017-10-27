@@ -1,4 +1,3 @@
-import Flag from './store/flagStore.js';
 import store from 'store';
 import VoxelsWorker from './voxels.worker.js';
 
@@ -20,11 +19,12 @@ const getColorIndex = (val) => {
 async function loadVoxels(data) {
   if (_.isArray(data)) {
     await _.forEach(data, (val) => {
-      if (val.capturable) store.flags.push(new Flag(val));
+      if (val.name) store.createFlag(val);
 
       store.game.setBlock([val.x, val.z, val.y], getColorIndex(val.owner))
     });
   } else {
+    if (data.name) store.createFlag(data);
     await store.game.setBlock([data.x, data.z, data.y], getColorIndex(data.owner));
   }
 }

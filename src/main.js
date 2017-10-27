@@ -29,6 +29,10 @@ async function initApp() {
 
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
+			user.getIdToken().then((accessToken) => {
+				console.log(accessToken);
+			});
+
 			store.user = new User(user);
 
 			return connectGame(user);

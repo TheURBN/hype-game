@@ -2,6 +2,7 @@ import player from 'voxel-player';
 import fly from 'voxel-fly';
 import colors from 'config/materials.js';
 import _ from 'lodash';
+import { observable } from 'mobx';
 
 
 
@@ -14,6 +15,8 @@ class User {
     this.startPosition = position;
     this.lastPosition = position;
     this.color = color;
+    this.flags = observable([]);
+    this.points = observable(0);
     this.admin = user.email === 'ruscheglov@gmail.com';
   }
 

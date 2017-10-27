@@ -1,15 +1,15 @@
 <template>
   <div class="leaderboard" v-if="users.length">
     <h2>Leaderboard</h2>
-    <ul class="leaderboard--users">
-      <li class="leader" v-for="(item, index) in users">
-        <div v-bind:class="item.class" v-bind:style="{ color: item.color }">
+     <transition-group name="flip-list" tag="ul" class="leaderboard--users">
+      <li class="leader" v-for="(item, index) in users" v-bind:key="index">
+        <div v-bind:class="item.class" v-bind:style="{ color: item.owner }">
           <span class="leader-number">#{{ index + 1 }}</span>
           <span class="leader-owner">owner: {{ item.owner }}</span>
           <span class="leader-points">{{ item.time }}</span>
         </div>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   },
   created() {
     this.fetchData('leaderboard');
-    setInterval(() => this.fetchData('leaderboard'), 5000);
+    setInterval(() => this.fetchData('leaderboard'), 3000);
   },
   methods: {
     fetchData(url, options = {}) {
@@ -36,12 +36,13 @@ export default {
         .then(this.updateLeaders);
     },
     updateLeaders(leaders) {
+      store.user.points.set(_.get(_.find(leaders, { owner: store.user.color }), 'time', 0));
+
       this.users = _(leaders)
         .slice(0, 9)
         .map((value, key) => {
           value.time = _.floor(value.time);
           value.class = `leader-index-${key + 1}`;
-          value.color = store.materials[value.owner];
         
           return value;
         }).value();
@@ -52,6 +53,10 @@ export default {
 
 
 <style lang="scss" scoped>
+  .flip-list-move {
+    transition: transform 1s;
+  }
+
   .leaderboard {
     position: absolute;
     top: 20px;
@@ -65,7 +70,6 @@ export default {
     
     h2 {
       text-align: center;
-      text-shadow: 0.5px 0.5px 0px #000;
     }
 
     .leader {
