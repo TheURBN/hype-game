@@ -11,6 +11,7 @@ class User {
     this.name = user.displayName;
     this.email = user.email;
     this.uid = user.uid;
+    this.token = user.token;
     this.photo = user.photoURL;
     this.startPosition = position;
     this.lastPosition = position;

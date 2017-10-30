@@ -1,6 +1,7 @@
-import * as mobx from 'mobx';
+import { observable, autorun } from 'mobx';
 import material from 'config/materials.js';
 import Flag from './flagStore.js';
+import _ from 'lodash';
 
 
 class GameStore {
@@ -10,10 +11,11 @@ class GameStore {
     this.ws = null;
     this.auth = null;
     this.materials = material;
-    this.flags = mobx.observable([]);
-    this.firstLoad = mobx.observable(true);
+    this.flags = observable([1]);
+    this.firstLoad = observable(true);
+    this.messages = [];
 
-    mobx.autorun(() => {
+    autorun(() => {
       if (!this.firstLoad.get()) this.hideMainLoader();
     });
   }
@@ -52,6 +54,15 @@ class GameStore {
 
   destroy() {
     this.section('app').remove();
+  };
+
+  emitMessage(msg) {
+    const event = {
+      text: msg,
+      time: + new Date(),
+    };
+
+    this.messages.push(event);
   };
 }
 

@@ -29,13 +29,12 @@ async function initApp() {
 
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
-			user.getIdToken().then((accessToken) => {
-				console.log(accessToken);
+			return user.getIdToken().then((accessToken) => {
+				user.token = accessToken;
+				store.user = new User(user);
+				
+				return connectGame(user);
 			});
-
-			store.user = new User(user);
-
-			return connectGame(user);
 		}
 
 		return errorHandeler();
