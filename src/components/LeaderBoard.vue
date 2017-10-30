@@ -11,7 +11,7 @@
               :start="item.time"
               :end="item.time"
               :decimals="0"
-              :duration="3"
+              :duration="5"
               :options="options"
             ></i-count-up>
       </span>
@@ -49,7 +49,7 @@ export default {
   },
   created() {
     this.fetchData('leaderboard');
-    setInterval(() => this.fetchData('leaderboard'), 3000);
+    setInterval(() => this.fetchData('leaderboard'), config.leaderboard);
   },
   methods: {
     fetchData(url, options = {}) {
@@ -114,7 +114,7 @@ export default {
 
     @for $i from 1 through 10 {
       .leader-index-#{$i} {
-        opacity: 1/$i + 0.25;
+        opacity: 1.1 - 0.1 * $i;
       }
     } 
   }

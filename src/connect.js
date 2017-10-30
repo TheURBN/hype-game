@@ -37,7 +37,7 @@ const socketEngine = {
 };
 
 const connectGame = (user) => {
-  const socket = new WebSocket(`${config.ws}?uid=${user.uid}`);
+  const socket = new WebSocket(`${config.ws}?token=${user.token}`);
   store.ws = socket;
 
   socket.sendWs = (type = 'range', args) => {

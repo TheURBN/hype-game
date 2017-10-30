@@ -47,8 +47,7 @@ const controls = (game, user) => {
 
     if (paddingX >= gameRange || paddingZ >= gameRange) {
       user.lastPosition = user.getPosition();
-      config.range = 70;
-      store.ws.sendWs('range', { x: userPositon.x, y: userPositon.z, range });
+      store.ws.sendWs('range', { x: userPositon.x, y: userPositon.z, range: gameRange });
     };
   });
 

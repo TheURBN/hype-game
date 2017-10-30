@@ -10,7 +10,7 @@
           :start="points"
           :end="points"
           :decimals="0"
-          :duration="3"
+          :duration="5"
           :options="options"
         ></i-count-up>
       </div>
