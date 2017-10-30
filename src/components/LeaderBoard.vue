@@ -32,7 +32,7 @@ import ICountUp from 'vue-countup-v2';
 
 export default {
   components: {
-    ICountUp
+    ICountUp,
   },
   data () {
     return {

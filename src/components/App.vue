@@ -8,16 +8,17 @@
 </template>
 
 <script>
-import UserPanel from './UserPanel.vue';
-import LeaderBoard from './LeaderBoard.vue';
-import Timeline from './Timeline.vue';
-import Score from './Score.vue';
+import UserPanel from '@/UserPanel.vue';
+import Leaderboard from '@/LeaderBoard.vue';
+import Score from '@/Score.vue';
+import Timeline from '@/TimeLine.vue';
+
 
 export default {
   name: 'app',
   components: {
     'user-panel': UserPanel,
-    'leader-board': LeaderBoard,
+    'leader-board': Leaderboard,
     'score': Score,
     'timeline': Timeline,
   },
