@@ -34,6 +34,12 @@ const socketEngine = {
       position: 'bottom',
     });
   },
+  userLogin: (data) => {
+    store.emitMessage(`${data.data.name} has joined the game`)
+  },
+  userLogout: (data) => {
+    store.emitMessage(`${data.data.name} left the game`)
+  },
 };
 
 const connectGame = (user) => {

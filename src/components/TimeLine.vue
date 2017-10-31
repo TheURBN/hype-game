@@ -12,10 +12,12 @@ import _ from 'lodash';
 
 
 export default {
-  data () {
-    return {}
+  props: {
+    messages: {
+      type: Array,
+      default: [],
+    },
   },
-  props: ['messages'],
   computed: {
     timeline: () => {
       const items = _(this.messages)

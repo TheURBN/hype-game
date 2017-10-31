@@ -3,11 +3,12 @@
     <user-panel></user-panel>
     <score></score>
     <leader-board></leader-board>
-    <timeline :messages="messages"></timeline>
+
   </div>
 </template>
 
 <script>
+import store from 'store';
 import UserPanel from '@/UserPanel.vue';
 import Leaderboard from '@/LeaderBoard.vue';
 import Score from '@/Score.vue';
@@ -24,8 +25,12 @@ export default {
   },
   data () {
     return {
-      messages: store.messages,
+      messages: [],
     }
   },
+  mounted() {
+    console.log(this.messages, store.messages);
+    this.messages = store.messages;
+  }
 };
 </script>
