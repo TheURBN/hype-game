@@ -22,8 +22,8 @@ const game = {
 const options = {
   game,
   leaderboard: 5000,
-  ws: 'wss://turg-svc.herokuapp.com/v1/ws/',
-  url: process.env.NODE_ENV === 'production' ? 'https://turg-svc.herokuapp.com' : 'http://localhost:5000',
+  ws: 'wss://turg-dot-aps-eu1.appspot.com/v1/ws/',
+  url: process.env.NODE_ENV === 'production' ? 'https://turg-dot-aps-eu1.appspot.com' : 'http://localhost:5000',
   range: 200,
   side: 1000,
   worldSize: [1000, 100, 1000],
