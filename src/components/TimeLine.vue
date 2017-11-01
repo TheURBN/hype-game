@@ -1,7 +1,7 @@
 <template>
   <transition-group name="list" tag="ul" class="timeline">
     <li class="timeline-item" :class="item.class" v-for="item, key in timeline" v-bind:key="item.time">
-      {{ item.text }} -
+      {{ item.text }}
     </li>
   </transition-group>
 </template>

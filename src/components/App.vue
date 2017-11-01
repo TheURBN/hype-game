@@ -1,7 +1,7 @@
 <template>
   <div v-if="user">
     <user-panel></user-panel>
-    <score v-if="user.points.length" timer='5'></score>
+    <score timer='5' :counter="user.flags.length"></score>
     <leader-board timer='5' size='10'></leader-board>
     <timeline :messages="messages" v-if="messages.length"></timeline>
     <modal name="help" class="help-container" width="800" height="500">

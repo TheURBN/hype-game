@@ -25,7 +25,7 @@ class User {
     this.avatar.possess();
     this.setPosition();
     this.removeBody();
-    // this.makeFly(game);
+    window.makeFly = () => this.makeFly(game);
   }
 
   setPosition(x = 500, y = 5, z = 500) {

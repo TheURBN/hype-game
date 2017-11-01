@@ -4,8 +4,8 @@
       <h2>You have capture the flag!</h2>
     </div>
     <div class="score" v-else key="score">
-      <div class="score-title">Your score: <span>{{ flags.length }} x 🏳️</span></div>
-      <div class="score-points">
+      <div class="score-title" v-if="points" >Your score: <span>{{ flags.length }} x 🏳️</span></div>
+      <div class="score-points" v-if="points">
         <i-count-up
           :start="points"
           :end="points"
@@ -46,6 +46,7 @@ export default {
       },
     }
   },
+  props: ['counter'],
   computed: {
     points() {
       return _.floor(store.user.points);
@@ -54,14 +55,16 @@ export default {
   mounted() {
     store.captureFlag = this.captureFlag;
   },
+  watch: {
+    counter(newFlags, oldFlags) {
+      console.log(newFlags > oldFlags, !store.firstLoad.get());
+      if((newFlags > oldFlags) && !store.firstLoad.get()) this.captureFlag();
+    },
+  },
   methods: {
-    captureFlag(flag, val = true) {
-      if (val) {
-        this.showCapture = true;
-        delay(3000).then(() => { this.showCapture = false })
-      }
-
-      this.flags = store.user.flags;
+    captureFlag() {
+      this.showCapture = true;
+      delay(3000).then(() => { this.showCapture = false })
     },
   },
 };

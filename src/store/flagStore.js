@@ -23,12 +23,10 @@ class FlagStore {
     const userFlag = _.find(store.user.flags, { name: flag.name });
     
     if (isUserFlag && !userFlag) {
-      store.captureFlag(flag);
       store.user.flags.push(flag);
     }
 
     if (userFlag && !isUserFlag) {
-      store.captureFlag(flag, false);
       _.remove(store.user.flags, userFlag);
     }
   }

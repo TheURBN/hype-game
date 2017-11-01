@@ -5,7 +5,7 @@
       <li class="leader" v-for="(item, index) in users" v-bind:key="index">
         <div v-bind:class="item.class" v-bind:style="{ color: item.owner }">
           <span class="leader-number">#{{ index + 1 }}</span>
-          <span class="leader-owner">owner: {{ item.owner }}</span>
+          <span class="leader-owner">{{ item.name }}</span>
           <span class="leader-points">
             <i-count-up
               :start="item.time"
@@ -107,9 +107,15 @@ export default {
       }
 
       &-owner {
-        text-align: center;
+        text-align: left;
         overflow: hidden;
         min-width: 150px;
+      }
+      &-points {
+        text-align: right;
+      }
+      &-number {
+        padding-right: 10px;
       }
     }
 
