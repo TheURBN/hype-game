@@ -24,7 +24,7 @@ const options = {
   timeout: 5000,
   ws: 'wss://turg.urbn.odn.pw/v1/ws/',
   url: process.env.NODE_ENV === 'production' ? 'https://turg.urbn.odn.pw' : 'http://localhost:5000',
-  range: 200,
+  range: game.chunkDistance * 32,
   side: 1000,
   worldSize: [1000, 100, 1000],
 }

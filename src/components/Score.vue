@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     points() {
-      return _.floor(store.user.points.get());
+      return _.floor(store.user.points);
     },
   },
   mounted() {

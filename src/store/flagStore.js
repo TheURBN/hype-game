@@ -25,13 +25,11 @@ class FlagStore {
     if (isUserFlag && !userFlag) {
       store.captureFlag(flag);
       store.user.flags.push(flag);
-      store.emitMessage(`${store.user.name} captured the flag "${flag.name}"`);
     }
 
     if (userFlag && !isUserFlag) {
       store.captureFlag(flag, false);
       _.remove(store.user.flags, userFlag);
-      store.emitMessage(`${flag.owner} captured the flag "${flag.name}"`);
     }
   }
 }

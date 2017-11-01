@@ -54,11 +54,12 @@ export default {
   methods: {
     fetchData(url, options = {}) {
       return fetch(`${config.url}/v1/${url}/`, options)
+        .catch((val) => console.log(val))
         .then(res => res.json())
         .then(this.updateLeaders);
     },
     updateLeaders(leaders) {
-      store.user.points.set(_.get(_.find(leaders, { owner: store.user.color }), 'time', 0));
+      store.user.points = _.get(_.find(leaders, { owner: store.user.color }), 'time', 0);
 
       this.users = _(leaders)
         .slice(0, 9)
