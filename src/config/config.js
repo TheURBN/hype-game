@@ -21,7 +21,7 @@ const game = {
 
 const options = {
   game,
-  leaderboard: 5000,
+  timeout: 5000,
   ws: 'wss://turg.urbn.odn.pw/v1/ws/',
   url: process.env.NODE_ENV === 'production' ? 'https://turg.urbn.odn.pw' : 'http://localhost:5000',
   range: 200,

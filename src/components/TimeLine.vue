@@ -19,7 +19,7 @@ export default {
     },
   },
   computed: {
-    timeline: () => {
+    timeline() {
       const items = _(this.messages)
         .slice(-5)
         .map((value, key) => {

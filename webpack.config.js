@@ -64,7 +64,7 @@ module.exports = {
     port: process.env.PORT || 5000,
     proxy: {
       '/v1': {
-        target: 'https://turg-svc.herokuapp.com',
+        target: 'https://turg.urbn.odn.pw',
         changeOrigin: true,
       },
     },

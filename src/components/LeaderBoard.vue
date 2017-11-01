@@ -49,7 +49,7 @@ export default {
   },
   created() {
     this.fetchData('leaderboard');
-    setInterval(() => this.fetchData('leaderboard'), config.leaderboard);
+    setInterval(() => this.fetchData('leaderboard'), config.timeout);
   },
   methods: {
     fetchData(url, options = {}) {

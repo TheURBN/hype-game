@@ -4,7 +4,8 @@
       <h2>You have capture the flag!</h2>
     </div>
     <div class="score" v-else key="score">
-      <div class="score-title">Your score: {{ flags.length }} 🏳️</div>
+      <div class="score-title">Your score: 
+        <span v-if="flags.length">{{ flags.length }} 🏳️</span></div>
       <div class="score-points">
         <i-count-up
           :start="points"
@@ -13,6 +14,7 @@
           :duration="5"
           :options="options"
         ></i-count-up>
+        <span v-if="flags.length">x {{ flags.length }}</span>
       </div>
     </div>
   </transition>

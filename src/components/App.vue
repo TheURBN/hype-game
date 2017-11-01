@@ -1,14 +1,13 @@
 <template>
-  <div>
+  <div v-if="user">
     <user-panel></user-panel>
-    <score></score>
+    <score v-if="user.points.get()"></score>
     <leader-board></leader-board>
-
+    <timeline :messages="messages" v-if="messages.length"></timeline>
   </div>
 </template>
 
 <script>
-import store from 'store';
 import UserPanel from '@/UserPanel.vue';
 import Leaderboard from '@/LeaderBoard.vue';
 import Score from '@/Score.vue';
@@ -25,12 +24,9 @@ export default {
   },
   data () {
     return {
-      messages: [],
+      user: store.user,
+      messages: store.messages,
     }
   },
-  mounted() {
-    console.log(this.messages, store.messages);
-    this.messages = store.messages;
-  }
 };
 </script>
