@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.vue$/,
@@ -56,6 +56,7 @@ module.exports = {
       'config': path.resolve(__dirname, 'src/config/'),
       'store': path.resolve(__dirname, 'src/store/gameStore.js'),
       '@': path.resolve(__dirname, 'src/components'),
+      'sweet-modal-vue': 'sweet-modal-vue/src',
     }
   },
   devServer: {

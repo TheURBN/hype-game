@@ -1,0 +1,54 @@
+.help {
+  color: #fff;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  &-item {
+    padding: 10px;
+    position: relative;
+    max-width: 300px;
+
+    &__number {
+      display: block;
+      font-size: 28px;
+      width: 40px;
+      height: 40px;
+      background: #000;
+      text-align: center;
+      line-height: 40px;
+      position: absolute;
+      border-right: 2px solid #7f00ff;
+      border-bottom: 2px solid #151093;
+    }
+
+    &__text {
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 5px 0;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+  }
+}
+
+.help-modal {
+  padding: 20px 15px;
+
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+  }
+}
+
+.help-container .v--modal {
+  background: $backgorund;
+}

@@ -4,8 +4,7 @@
       <h2>You have capture the flag!</h2>
     </div>
     <div class="score" v-else key="score">
-      <div class="score-title">Your score: 
-        <span v-if="flags.length">{{ flags.length }} 🏳️</span></div>
+      <div class="score-title">Your score: <span>{{ flags.length }} x 🏳️</span></div>
       <div class="score-points">
         <i-count-up
           :start="points"
@@ -14,7 +13,7 @@
           :duration="5"
           :options="options"
         ></i-count-up>
-        <span v-if="flags.length">x {{ flags.length }}</span>
+        <span v-if="flags.length"> x{{ flags.length }}</span>
       </div>
     </div>
   </transition>
@@ -80,7 +79,7 @@ export default {
   .capture-flag {
     background-image: radial-gradient(ellipse farthest-side at 50% 0%, #2da04d, rgba(178,0,0,0));
     h2 {
-      font-size: 32px;
+      font-size: 28px;
       text-transform: uppercase;
     }
   }
@@ -98,6 +97,9 @@ export default {
     &-title {
       color: #555;
       font-size: 12px;
+      span {
+        color: #eee;
+      }
     }
 
     &-points {
