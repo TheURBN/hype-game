@@ -7,7 +7,7 @@ import config from 'config/config.js';
 import connectGame from './connect.js';
 import './assets/css/app.scss';
 
-window.store = store; // debu
+window.store = store; // debug
 
 const errorHandeler = (error) => {
 	store.user = {};
