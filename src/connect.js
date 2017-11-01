@@ -77,7 +77,7 @@ const connectGame = (user) => {
     const userPositon = store.user.lastPosition;
     const range = config.range;
 
-    socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range: range * 2 });
+    socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range: range });
   });
 };
 

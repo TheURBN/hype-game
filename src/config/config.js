@@ -2,7 +2,7 @@ import color from './materials.js';
 import voxel from 'voxel';
 
 const game = {
-  chunkDistance: 4,
+  chunkDistance: 6,
   removeDistance: 16,
   generate: (x, y, z) => y === -1,
   materials: color,
