@@ -51,4 +51,23 @@
 
 .help-container .v--modal {
   background: $backgorund;
+  border-radius: 0;
+
+  .help-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    outline: none;
+  }
+}
+
+#loader-container {
+  .help-modal {
+    width: 800px;
+    height: 500px;
+  }
 }

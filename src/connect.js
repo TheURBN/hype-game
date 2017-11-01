@@ -9,6 +9,7 @@ import config from 'config/config.js';
 import store from 'store';
 import loadVoxels from './voxels.js';
 import loadVue from './components';
+import template from "html-loader!./components/help.html";
 
 
 
@@ -17,6 +18,8 @@ const socketEngine = {
     store.user.color = data.data.color;
 
     if (!store.game) {
+      const elem = document.getElementById("loader-container")
+      elem.innerHTML = template;
       store.game = Game();
       loadVue();
     };

@@ -6,6 +6,9 @@
     <timeline :messages="messages" v-if="messages.length"></timeline>
     <modal name="help" class="help-container" width="800" height="500">
       <div v-html="help"></div>
+      <button class="help-close" @click="$modal.hide('help')">
+        ❌
+      </button>
     </modal>
   </div>
 </template>
