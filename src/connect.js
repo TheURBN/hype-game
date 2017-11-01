@@ -3,20 +3,25 @@ import { alert } from 'notie';
 import nanoid from 'nanoid';
 import delay from 'nanodelay';
 import Vue from 'vue';
-import App from './components/App.vue';
 import User from './user.js';
 import Game from './game.js';
 import config from 'config/config.js';
 import store from 'store';
 import loadVoxels from './voxels.js';
+import loadVue from './components';
+import template from "html-loader!./components/help.html";
+
+
 
 const socketEngine = {
   userColor: (data) => {
     store.user.color = data.data.color;
 
     if (!store.game) {
+      const elem = document.getElementById("loader-container")
+      elem.innerHTML = template;
       store.game = Game();
-      new Vue({ el: '#control-panel', render: h => h(App) });
+      loadVue();
     };
   },
   update: (data) => loadVoxels(data.data),

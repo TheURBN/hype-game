@@ -9,6 +9,7 @@ $backgorund: #353535;
 @import "./loading.scss";
 @import '../../../node_modules/notie/src/notie.scss';
 @import './firebase.scss';
+@import './help.scss';
 
 
 html, body {
@@ -92,4 +93,5 @@ body {
 
 #loader {
   z-index: 100;
+  flex-direction: column;
 }
