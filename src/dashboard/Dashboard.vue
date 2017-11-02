@@ -1,8 +1,12 @@
 <template>
   <div class="dashboard container">
-    <div class="dashboard-logo"></div>
+    <div class="dashboard-logo" v-if="user"></div>
     <leader-board :timer='5' :size='50' :dashboard='true'></leader-board>
     <timeline :messages="messages" :size='50' v-if="messages.length" :dashboard='true'></timeline>
+    <section id="sign-in" style='display: none;'>
+      <h2>Connect to the game</h2>
+      <div id="firebaseui-auth-container"></div>
+    </section>
   </div>
 </template>
 
@@ -27,6 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   .dashboard {
     background: #000;
     display: flex;
@@ -35,8 +40,23 @@ export default {
     justify-content: space-around;
     align-items: stretch;
     align-content: stretch;
+    
+    #sign-in {
+      height: 100vh;
+      background: #363537;
 
-    .leaderboard, .timeline {
+      h2 {
+        color: #fff;
+        text-align: center;
+      }
+
+      #firebaseui-auth-container {
+        margin: 0 auto;
+        margin-top: 50px
+      }
+    }
+
+    .leaderboard, .timeline, #sign-in {
       position: relative;
       top: inherit;
       right: inherit;

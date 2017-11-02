@@ -8,7 +8,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     app: ['babel-polyfill', './src/main.js'],
-    dashboard: ['babel-polyfill', './src/dashboard.js'],
+    dashboard: ['babel-polyfill', './src/dashboard/index.js'],
   },
   output: {
     path: path.resolve(__dirname, './dist'),

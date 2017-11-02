@@ -1,10 +1,10 @@
 import firebase from 'firebase';
-import auth from './auth.js';
-import config from './config/config';
+import auth from '../auth.js';
+import config from '../config/config';
 import store from 'store';
 import Vue from 'vue';
-import Dashboard from '@/Dashboard.vue';
-import User from './user.js';
+import Dashboard from './Dashboard.vue';
+import User from '../user.js';
 
 window.store = store;
 
@@ -36,7 +36,8 @@ const connectDashboard = (accessToken) => {
   });
 };
 
-async function initApp() {	
+async function initApp() {
+  vueInit();	
 	auth();
 
 	firebase.auth().onAuthStateChanged((user) => {
@@ -45,10 +46,13 @@ async function initApp() {
 				user.accessToken = accessToken;
 				store.user = new User(user);
 
-				connectDashboard(accessToken);
-				vueInit();
+        connectDashboard(accessToken);
+        store.section('sign-in').hide();
+        store.section('sign-in').remove();
 			});
-		}
+		} else {
+      store.section('sign-in').show();
+    }
 	});
 };
 

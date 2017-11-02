@@ -64,7 +64,7 @@ export default {
         .then(this.updateLeaders);
     },
     updateLeaders(leaders) {
-      store.user.points = _.get(_.find(leaders, { owner: store.user.color }), 'time', 0);
+      if (!this.dashboard) store.user.points = _.get(_.find(leaders, { owner: store.user.color }), 'time', 0);
 
       this.users = _(leaders)
         .slice(0, this.size)
