@@ -5,8 +5,8 @@ import store from 'store';
 import Vue from 'vue';
 import Dashboard from './Dashboard.vue';
 import User from '../user.js';
+import delay from 'nanodelay';
 
-window.store = store;
 
 const socketEngine = {
   userLogin: (data) => {
