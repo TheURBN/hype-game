@@ -1,54 +1,55 @@
 import firebase from 'firebase';
 import auth from './auth.js';
-import User from './user.js';
+import config from './config/config';
 import store from 'store';
-import config from 'config/config.js';
 import Vue from 'vue';
 import Dashboard from '@/Dashboard.vue';
-import './assets/css/app.scss';
+import User from './user.js';
 
+window.store = store;
 
-const initDashboard = () => {
-	store.section('sign-in').hide();
-	store.section('loader').hide();
-	new Vue({ el: '#app', render: h => h(Dashboard) });
+const socketEngine = {
+  userLogin: (data) => {
+    store.emitMessage(`${data.data.name} has joined the game`);
+  },
+  userLogout: (data) => {
+    store.emitMessage(`${data.data.name} left the game`);
+  },
+  flagCaptured: (data) => {
+    store.emitMessage(`${data.data.name} captured the flag "${data.data.flag}"`);
+  },
 };
 
-const connectGame = (user) => {
-	const socket = new WebSocket(`${config.ws}?token=${user.token}`);
 
+const vueInit = () => {
+  new Vue({ el: '#app', render: h => h(Dashboard) });
+}
+
+const connectDashboard = (accessToken) => {
+	const socket = new WebSocket(`${config.ws}?token=${accessToken}`);
+	socket.addEventListener('close', () => setTimeout(() => connectDashboard(store.user.accessToken), config.timeout));
 	socket.addEventListener('message', (res) => {
     const data = JSON.parse(res.data);
-		const meta = _.get(data.meta, 'type');
-	
-		if (meta === 'userLogin') store.emitMessage(`${data.data.name} has joined the game`);
-		if (meta === 'userLogout') store.emitMessage(`${data.data.name} left the game`);
-  });
+    const type = _.get(data, 'meta.type', 'error');
 
-  socket.addEventListener('close', () => setTimeout(() => connectGame(store.user), config.timeout));
+    if (_.get(socketEngine, type)) socketEngine[type](data);
+  });
 };
 
 async function initApp() {	
 	auth();
 
-	store.section('loader').show();
-	store.section('sign-in').hide();
-	store.section('app').hide();
-
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
 			return user.getIdToken().then((accessToken) => {
-				user.token = accessToken;
+				user.accessToken = accessToken;
 				store.user = new User(user);
 
-				connectGame(user);
-				initDashboard();
+				connectDashboard(accessToken);
+				vueInit();
 			});
 		}
-
-		return errorHandeler();
-	}, (error) => errorHandeler(error));
+	});
 };
-
 
 window.addEventListener('load', initApp);

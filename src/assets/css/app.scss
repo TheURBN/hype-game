@@ -13,7 +13,8 @@ $backgorund: #353535;
 
 
 html, body {
-  font-family: 'Roboto', sans-serif;  
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 .notie-container {
@@ -94,4 +95,14 @@ body {
 #loader {
   z-index: 100;
   flex-direction: column;
+}
+
+#phone {
+  h1 {
+    font-size: 4rem;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    line-height: 1.6;
+  }
 }

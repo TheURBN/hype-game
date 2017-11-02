@@ -14,6 +14,7 @@ const game = {
   skyColor: '0x000000',
   playerHeight: 2,
   mesher: voxel.meshers.greedy,
+  statsDisabled: true,
   controls: {
     discreteFire: true,
   },
@@ -23,8 +24,8 @@ const options = {
   game,
   timeout: 5000,
   ws: 'wss://turg.urbn.odn.pw/v1/ws/',
-  url: process.env.NODE_ENV === 'production' ? 'https://turg.urbn.odn.pw' : 'http://localhost:5000',
-  range: 200,
+  url: 'https://turg.urbn.odn.pw',
+  range: game.chunkDistance * 32,
   side: 1000,
   worldSize: [1000, 100, 1000],
 }

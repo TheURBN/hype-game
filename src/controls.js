@@ -53,13 +53,14 @@ const controls = (game, user) => {
 
   game.on('fire', (target, state) => {
     const position = blockPosPlace;
+    const outWorld = _.every(position, (v, k) => v < config.worldSize[k] && v > -1);
 
-    if (position && _.every(position, (v, k) => v < config.worldSize[k] && v > -1) && game.canCreateBlock(position)) {
+    if (position && outWorld) {
       const [x, z, y] = position;
 
       store.ws.sendWs('update', { x, y, z, owner: 'null' });
     } else {
-      if (position) alert({ type: 'warning', text: 'Voxel cannot be created at this position', position: 'bottom' });
+      if (position && !outWorld) alert({ type: 'warning', text: 'Voxel cannot be created at this position', position: 'bottom' });
     }
   });
 }

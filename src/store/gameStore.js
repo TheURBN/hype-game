@@ -11,7 +11,7 @@ class GameStore {
     this.ws = null;
     this.auth = null;
     this.materials = material;
-    this.flags = observable([1]);
+    this.flags = [];
     this.firstLoad = observable(true);
     this.messages = [];
 

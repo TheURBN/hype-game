@@ -40,10 +40,13 @@ const socketEngine = {
     });
   },
   userLogin: (data) => {
-    store.emitMessage(`${data.data.name} has joined the game`)
+    store.emitMessage(`${data.data.name} has joined the game`);
   },
   userLogout: (data) => {
-    store.emitMessage(`${data.data.name} left the game`)
+    store.emitMessage(`${data.data.name} left the game`);
+  },
+  flagCaptured: (data) => {
+    store.emitMessage(`${data.data.name} captured the flag "${data.data.flag}"`);
   },
 };
 
@@ -68,8 +71,8 @@ const connectGame = (user) => {
     const type = _.get(data, 'meta.type', 'error');
 
     if (error) return socketEngine.error(data);
-
-    return socketEngine[type](data);
+    
+    if (_.get(socketEngine, type)) socketEngine[type](data);
   });
 
   socket.addEventListener('close', () => setTimeout(() => connectGame(store.user), config.timeout));
@@ -77,7 +80,7 @@ const connectGame = (user) => {
     const userPositon = store.user.lastPosition;
     const range = config.range;
 
-    socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range: range * 2 });
+    socket.sendWs('range', { x: userPositon.x, y: userPositon.z, range: range });
   });
 };
 

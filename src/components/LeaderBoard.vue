@@ -1,17 +1,17 @@
 <template>
-  <div class="leaderboard" v-if="users.length">
+  <div class="leaderboard" v-if="users.length" :class="{'leaderboard-dashboard': dashboard }">
     <h2>Leaderboard</h2>
      <transition-group name="flip-list" tag="ul" class="leaderboard--users">
       <li class="leader" v-for="(item, index) in users" v-bind:key="index">
         <div v-bind:class="item.class" v-bind:style="{ color: item.owner }">
           <span class="leader-number">#{{ index + 1 }}</span>
-          <span class="leader-owner">owner: {{ item.owner }}</span>
+          <span class="leader-owner">{{ item.name }}</span>
           <span class="leader-points">
             <i-count-up
               :start="item.time"
               :end="item.time"
               :decimals="0"
-              :duration="5"
+              :duration="timer"
               :options="options"
             ></i-count-up>
       </span>
@@ -47,6 +47,11 @@ export default {
       },
     }
   },
+  props: {
+    timer: Number,
+    size: Number,
+    dashboard: Boolean,
+  },
   created() {
     this.fetchData('leaderboard');
     setInterval(() => this.fetchData('leaderboard'), config.timeout);
@@ -54,14 +59,15 @@ export default {
   methods: {
     fetchData(url, options = {}) {
       return fetch(`${config.url}/v1/${url}/`, options)
+        .catch((val) => console.log(val))
         .then(res => res.json())
         .then(this.updateLeaders);
     },
     updateLeaders(leaders) {
-      store.user.points.set(_.get(_.find(leaders, { owner: store.user.color }), 'time', 0));
+      store.user.points = _.get(_.find(leaders, { owner: store.user.color }), 'time', 0);
 
       this.users = _(leaders)
-        .slice(0, 9)
+        .slice(0, this.size)
         .map((value, key) => {
           value.time = _.floor(value.time);
           value.class = `leader-index-${key + 1}`;
@@ -106,9 +112,15 @@ export default {
       }
 
       &-owner {
-        text-align: center;
+        text-align: left;
         overflow: hidden;
         min-width: 150px;
+      }
+      &-points {
+        text-align: right;
+      }
+      &-number {
+        padding-right: 10px;
       }
     }
 
@@ -117,5 +129,24 @@ export default {
         opacity: 1.1 - 0.1 * $i;
       }
     } 
+
+    &.leaderboard-dashboard {
+      h2 {
+        margin-bottom: 2rem;
+      }
+      .leaderboard--users {
+        padding: 0 4rem;
+      }
+      .leader {
+        font-size: 1rem;
+        width: 100%;
+        &-number {
+          width: 40px;
+        }
+        &-owner {
+          padding: 0 20px;
+        }
+      }
+    }
   }
 </style>
