@@ -1,7 +1,7 @@
 <template>
   <transition name="fade" mode="out-in" v-if="points">
     <div class="score capture-flag" v-if="showCapture" key="flag">
-      <h2>You have capture the flag!</h2>
+      <h2>You have captured the flag!</h2>
     </div>
     <div class="score" v-else key="score">
       <div class="score-title" v-if="points" >Your score: <span>{{ flags.length }} x 🏳️</span></div>
@@ -13,7 +13,6 @@
           :duration="5"
           :options="options"
         ></i-count-up>
-        <span v-if="flags.length"> x{{ flags.length }}</span>
       </div>
     </div>
   </transition>

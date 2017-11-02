@@ -33,11 +33,13 @@ const socketEngine = {
   error: (data) => {
     if (data.error.conflict) loadVoxels(data.error.conflict);
 
-    return alert({
-      type: 'error',
-      text: data.error.message,
-      position: 'bottom',
-    });
+    if (data.error.message !== 'Space already occupied') {
+      return alert({
+        type: 'error',
+        text: data.error.message,
+        position: 'bottom',
+      });
+    }
   },
   userLogin: (data) => {
     store.emitMessage(`${data.data.name} has joined the game`);
@@ -50,8 +52,8 @@ const socketEngine = {
   },
 };
 
-const connectGame = (user) => {
-  const socket = new WebSocket(`${config.ws}?token=${user.token}`);
+const connectGame = (token) => {
+  const socket = new WebSocket(`${config.ws}?token=${token}`);
   store.ws = socket;
 
   socket.sendWs = (type = 'range', args) => {
@@ -75,7 +77,9 @@ const connectGame = (user) => {
     if (_.get(socketEngine, type)) socketEngine[type](data);
   });
 
-  socket.addEventListener('close', () => setTimeout(() => connectGame(store.user), config.timeout));
+  socket.addEventListener('close', () => delay(config.timeout)
+    .then(() => store.user.firebaseUser.getIdToken().then(token => connectGame(token))));
+
   socket.addEventListener('open', () => {
     const userPositon = store.user.lastPosition;
     const range = config.range;

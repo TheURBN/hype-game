@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container">
-    <div class="dashboard-logo" v-if="user"></div>
+    <div class="dashboard-logo" v-if="messages.length"></div>
     <leader-board :timer='5' :size='50' :dashboard='true'></leader-board>
     <timeline :messages="messages" :size='50' v-if="messages.length" :dashboard='true'></timeline>
     <section id="sign-in" style='display: none;'>

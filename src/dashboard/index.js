@@ -26,8 +26,10 @@ const vueInit = () => {
 }
 
 const connectDashboard = (accessToken) => {
-	const socket = new WebSocket(`${config.ws}?token=${accessToken}`);
-	socket.addEventListener('close', () => setTimeout(() => connectDashboard(store.user.accessToken), config.timeout));
+  const socket = new WebSocket(`${config.ws}?token=${accessToken}`);
+  socket.addEventListener('close', () => delay(config.timeout)
+    .then(() => store.user.firebaseUser.getIdToken().then(token => connectDashboard(token))));
+
 	socket.addEventListener('message', (res) => {
     const data = JSON.parse(res.data);
     const type = _.get(data, 'meta.type', 'error');

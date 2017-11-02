@@ -11,6 +11,7 @@ class User {
     this.email = user.email;
     this.uid = user.uid;
     this.token = user.token;
+    this.firebaseUser = user;
     this.photo = user.photoURL;
     this.startPosition = position;
     this.lastPosition = position;

@@ -3,7 +3,7 @@
     <user-panel></user-panel>
     <score :timer='5' :counter="user.flags.length"></score>
     <leader-board :timer='5' :size='10'></leader-board>
-    <timeline :messages="messages" v-if="messages.length"></timeline>
+    <timeline :messages="messages" :size='5' v-if="messages.length"></timeline>
     <help></help>
   </div>
 </template>

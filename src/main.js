@@ -30,19 +30,20 @@ async function initApp() {
 	store.section('loader').show();
 	store.section('sign-in').hide();
 	store.section('app').hide();
-
-	firebase.auth().onAuthStateChanged((user) => {
+	
+	firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+	.then(() => firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
 			return user.getIdToken().then((accessToken) => {
 				user.token = accessToken;
 				store.user = new User(user);
 				
-				return connectGame(user);
+				return connectGame(accessToken);
 			});
 		}
 
 		return errorHandeler();
-	}, (error) => errorHandeler(error));
+	}, (error) => errorHandeler(error)));
 };
 
 if (!isMobile) {
