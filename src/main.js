@@ -1,4 +1,5 @@
 import { alert } from 'notie';
+import MobileDetect from 'mobile-detect';
 import firebase from 'firebase';
 import auth from './auth.js';
 import User from './user.js';
@@ -7,7 +8,10 @@ import config from 'config/config.js';
 import connectGame from './connect.js';
 import './assets/css/app.scss';
 
-window.store = store; // debu
+window.store = store; // debug
+
+const md = new MobileDetect(window.navigator.userAgent);
+const isMobile = md.mobile();
 
 const errorHandeler = (error) => {
 	store.user = {};
@@ -41,5 +45,9 @@ async function initApp() {
 	}, (error) => errorHandeler(error));
 };
 
-
-window.addEventListener('load', initApp);
+if (!isMobile) {
+	window.addEventListener('load', initApp);
+} else {
+	store.section('loader').hide();
+	store.section('phone').show();
+};

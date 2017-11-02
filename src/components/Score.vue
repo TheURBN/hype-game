@@ -57,7 +57,6 @@ export default {
   },
   watch: {
     counter(newFlags, oldFlags) {
-      console.log(newFlags > oldFlags, !store.firstLoad.get());
       if((newFlags > oldFlags) && !store.firstLoad.get()) this.captureFlag();
     },
   },

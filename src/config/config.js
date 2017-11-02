@@ -14,6 +14,7 @@ const game = {
   skyColor: '0x000000',
   playerHeight: 2,
   mesher: voxel.meshers.greedy,
+  statsDisabled: true,
   controls: {
     discreteFire: true,
   },
