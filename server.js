@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 5000;
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname)));
 
-// Answer API requests.
 app.get('/dashboard', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'dashboard.html'));
 });
