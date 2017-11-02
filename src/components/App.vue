@@ -1,8 +1,8 @@
 <template>
   <div v-if="user">
     <user-panel></user-panel>
-    <score timer='5' :counter="user.flags.length"></score>
-    <leader-board timer='5' size='10'></leader-board>
+    <score :timer='5' :counter="user.flags.length"></score>
+    <leader-board :timer='5' :size='10'></leader-board>
     <timeline :messages="messages" v-if="messages.length"></timeline>
     <help></help>
   </div>

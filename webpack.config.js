@@ -6,11 +6,14 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
-  entry: ['babel-polyfill', './src/main.js'],
+  entry: {
+    app: ['babel-polyfill', './src/main.js'],
+    dashboard: ['babel-polyfill', './src/dashboard.js'],
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -78,6 +81,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'dashboard.html',
+      template: 'dashboard.html',
       inject: true
     }),
     new ExtractTextPlugin('main.css', { allChunks: true }),
