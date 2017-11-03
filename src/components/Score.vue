@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade" mode="out-in" v-if="points">
+  <transition name="fade" mode="out-in">
     <div class="score capture-flag" v-if="showCapture" key="flag">
       <h2>You have captured the flag!</h2>
     </div>
