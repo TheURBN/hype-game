@@ -1,4 +1,3 @@
-import { observable, autorun } from 'mobx';
 import material from 'config/materials.js';
 import Flag from './flagStore.js';
 import _ from 'lodash';
@@ -12,12 +11,8 @@ class GameStore {
     this.auth = null;
     this.materials = material;
     this.flags = [];
-    this.firstLoad = observable(true);
+    this.firstLoad = true;
     this.messages = [];
-
-    autorun(() => {
-      if (!this.firstLoad.get()) this.hideMainLoader();
-    });
   }
   
   createFlag(flag) {
@@ -33,6 +28,7 @@ class GameStore {
   }
 
   hideMainLoader() {
+    this.firstLoad = false;
     this.section('app').show();
     this.section('loader').hide();
     this.section('loader').remove();

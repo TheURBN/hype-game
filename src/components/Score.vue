@@ -21,7 +21,6 @@
 <script>
 import config from 'config/config.js';
 import store from 'store';
-import { observe } from 'mobx';
 import delay from 'nanodelay';
 
 import ICountUp from 'vue-countup-v2';
@@ -56,7 +55,7 @@ export default {
   },
   watch: {
     counter(newFlags, oldFlags) {
-      if((newFlags > oldFlags) && !store.firstLoad.get()) this.captureFlag();
+      if((newFlags > oldFlags) && !store.firstLoad) this.captureFlag();
     },
   },
   methods: {

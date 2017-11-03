@@ -27,7 +27,7 @@ const socketEngine = {
   update: (data) => loadVoxels(data.data),
   range: (data) => {
     loadVoxels(data.data).then(() => {
-      if (store.firstLoad.get()) return delay(2000).then(() => store.firstLoad.set(false));
+      if (store.firstLoad) return delay(2000).then(() => store.hideMainLoader());
     });
   },
   error: (data) => {

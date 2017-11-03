@@ -1,4 +1,3 @@
-import * as mobx from 'mobx';
 import _ from 'lodash';
 import store from '../store/gameStore.js';
 

@@ -13,7 +13,7 @@ const game = {
   startingPosition: [500, 5, 500],
   skyColor: '0x000000',
   playerHeight: 2,
-  mesher: voxel.meshers.transgreedy,
+  mesher: voxel.meshers.greedy,
   statsDisabled: true,
   controls: {
     discreteFire: true,
