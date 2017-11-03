@@ -36,8 +36,8 @@ class GameStore {
     this.section('app').show();
     this.section('loader').hide();
     this.section('loader').remove();
-    store.section('sign-in').hide();
-    store.section('sign-in').remove();
+    this.section('sign-in').hide();
+    this.section('sign-in').remove();
   };
 
   section(name) {

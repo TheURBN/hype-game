@@ -14,6 +14,8 @@ import Leaderboard from '@/LeaderBoard.vue';
 import Score from '@/Score.vue';
 import Timeline from '@/TimeLine.vue';
 import Help from '@/Help.vue';
+import store from 'store';
+
 
 export default {
   name: 'app',

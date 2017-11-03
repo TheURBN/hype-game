@@ -8,7 +8,6 @@ import config from 'config/config.js';
 import connectGame from './connect.js';
 import './assets/css/app.scss';
 
-window.store = store; // debug
 
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobile = md.mobile();
