@@ -3,7 +3,7 @@ $notie-color-warning: #D6A14D;
 $notie-color-error: #E1715B;
 $notie-color-info: #4D82D6;
 $notie-color-neutral: #A0A0A0;
-$backgorund: #353535;
+$backgorund: #000000;
 
 @import "./reset.css";
 @import "./loading.scss";
@@ -82,9 +82,31 @@ body {
   h2 {
     text-align: center;
     color: white;
-    font-size: 42px;
-    line-height: 1.5;
+    font-size: 32px;
     display: block;
+    padding: 40px 0 3px;
+  }
+
+  a {
+    text-align: center;
+    display: block;
+    color: #737373;
+  }
+
+  .sign-in--logo {
+    background-image: url(/dist/img/theurbn-logo.svg);
+    display: block;
+    width: 170px;
+    height: 200px;
+    background-size: cover;
+    margin: 0 auto;
+  }
+
+  .main-github {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    font-size: 10px;
   }
 
   .loaders {

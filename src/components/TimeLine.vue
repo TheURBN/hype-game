@@ -21,6 +21,7 @@ export default {
       default: [],
     },
     dashboard: Boolean,
+    size: Number,
   },
   computed: {
     timeline() {

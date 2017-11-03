@@ -38,17 +38,25 @@ export default {
 <style lang="scss" scoped>
 
   .dashboard {
-    background: #363638;
+    background: #000;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: stretch;
     align-content: stretch;
+
+    #firebaseui-auth-container {
+      background: #000;
+
+      .firebaseui-container {
+        background: #000;
+      }
+    }
     
     #sign-in {
       height: 100vh;
-      background: #363537;
+      background: #000;
 
       h2 {
         color: #fff;
@@ -72,7 +80,7 @@ export default {
     }
     
     .timeline {
-      background: #1d1d1d;
+      background: #000;
     }
   };
 
@@ -87,13 +95,14 @@ export default {
     padding: 5px 0px;
 
     .dashboard-logo {
-      background-image: url(/dist/img/urbn_logo.png);
+      background-image: url(/dist/img/theurbn-logo.svg);
       background-size: cover;
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       z-index: 20;
       margin: 0 auto;
       display: inline-block;
+      margin-top: 5px;
     }
 
     a {
