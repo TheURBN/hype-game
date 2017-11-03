@@ -1,12 +1,17 @@
 <template>
-  <div class="dashboard container">
-    <div class="dashboard-logo" v-if="messages.length"></div>
-    <leader-board :timer='5' :size='50' :dashboard='true'></leader-board>
-    <timeline :messages="messages" :size='50' v-if="messages.length" :dashboard='true'></timeline>
-    <section id="sign-in" style='display: none;'>
-      <h2>Connect to the game</h2>
-      <div id="firebaseui-auth-container"></div>
-    </section>
+  <div>
+    <div class="dashboard-header">
+      <div class="dashboard-logo"></div>
+      <a href="http://urbn.odn.pw">URBN.ODN.PW</a>
+    </div>
+    <div class="dashboard container">
+      <leader-board :timer='5' :size='50' :dashboard='true'></leader-board>
+      <timeline :messages="messages" :size='50' v-if="messages.length" :dashboard='true'></timeline>
+      <section id="sign-in" style='display: none;'>
+        <h2>Connect to the game</h2>
+        <div id="firebaseui-auth-container"></div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -33,7 +38,7 @@ export default {
 <style lang="scss" scoped>
 
   .dashboard {
-    background: #000;
+    background: #363638;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -63,21 +68,41 @@ export default {
       min-width: 50vw;
       font-size: 2rem;
       box-sizing: border-box;
-      padding: 3rem 2rem;
+      padding: 7rem 2rem 2rem;
     }
     
     .timeline {
       background: #1d1d1d;
     }
-    
+  };
+
+  .dashboard-header {
+    display: block;
+    width: 100vw;
+    height: 80px;
+    background: #000;
+    z-index: 20;
+    position: absolute;
+    text-align: center;
+    padding: 5px 0px;
+
     .dashboard-logo {
-      background-image: url('/dist/img/urbn_logo.png');
+      background-image: url(/dist/img/urbn_logo.png);
       background-size: cover;
-      position: absolute;
       width: 80px;
       height: 80px;
       z-index: 20;
-      margin: 10px 0;
+      margin: 0 auto;
+      display: inline-block;
     }
-  };
+
+    a {
+      display: inline-block;
+      vertical-align: top;
+      padding: 23px;
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
 </style>
