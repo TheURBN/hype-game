@@ -38,7 +38,7 @@ const controls = (game, user) => {
   hl.on('highlight', (voxel) => blockPosPlace = voxel);
   hl.on('highlight-adjacent', (voxel) => blockPosPlace = voxel);
   
-  game.chunkRegion.on('change', (pos) => {
+  game.on('tick', () => {
     const userPositon = user.getPosition();
     const range = config.range;
     const gameRange = config.range / 2;
