@@ -10,6 +10,7 @@ import store from 'store';
 import loadVoxels from './voxels.js';
 import loadVue from './components';
 import template from "html-loader!./components/help.html";
+import firebase from 'firebase';
 
 
 
@@ -79,6 +80,21 @@ const connectGame = (token) => {
 
   socket.addEventListener('close', () => delay(config.timeout)
     .then(() => store.user.firebaseUser.getIdToken().then(token => connectGame(token))));
+
+
+  socket.addEventListener('error', (e) => {
+    alert({
+      type: 'error',
+      text: 'Something went wrong',
+      position: 'bottom',
+    });
+
+    firebase.auth().signOut()
+    .then(() => delay(5000))
+    .then(() => {
+      window.location.href=window.location.href;
+    });
+  });
 
   socket.addEventListener('open', () => {
     const userPositon = store.user.lastPosition;
