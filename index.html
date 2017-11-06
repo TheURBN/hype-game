@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&amp;subset=cyrillic" rel="stylesheet">    
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css" />
-    <link rel="stylesheet" href="/dist/main.css" />
-    <title>HYPE GAME</title>
-  </head>
-  <body>
-    <section id="loader" class="container c-loaders">
-      <div id="loader-container"></div>
-      <div class="loaders">
-        <span class="loader loader-quart"> </span> Loading...
-      </div>
-    </section>
 
-    <section id="sign-in" class="container sign-in" style='display: none;'>
-        <div class="sign-on-welocome">
-          <div class="sign-in--logo"></div>
-          <!-- <h1>Welcome to THEURBN</h1> -->
-          <h2>Login to Start the Game</h2>
-          <div id="firebaseui-auth-container"></div>
-          <a href="/dashboard">Leadersboard</a>
-        </div>
-        <a href="https://github.com/theurbn" target="_blank" class="main-github">github.com/theurbn</a>
-    </section>
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&amp;subset=cyrillic" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css" />
+  <link rel="stylesheet" href="/dist/main.css" />
+  <title>TheURBN Game</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108836948-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    <div id="app" style='display: none;'>
-      <div id="game"></div>
-      <div class="crosshair"></div>
-      <div id="control-panel"></div>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108836948-1');
+  </script>
+</head>
+
+<body>
+  <section id="loader" class="container c-loaders">
+    <div id="loader-container"></div>
+    <div class="loaders">
+      <span class="loader loader-quart"> </span> Loading...
     </div>
+  </section>
 
-    <div id="phone" class="container" style='display: none;'>
-      <h1>Извини, но мы не поддерживаем мобильные устройства 🤔</h1>
+  <section id="sign-in" class="container sign-in" style='display: none;'>
+    <div class="sign-on-welocome">
+      <div class="sign-in--logo"></div>
+      <h2>Login to Start the Game</h2>
+      <div id="firebaseui-auth-container"></div>
+      <a href="/dashboard" class="linkblock">
+        <span class="icon-text">Leaderboard</span>
+        <img class="icon" src="//urbn.odn.pw/static/img/ic_open_in_new.svg"/>
+      </a>
     </div>
-    <script src="/dist/app.js"></script>
-  </body>
+    <a href="https://github.com/theurbn" target="_blank" class="main-github">github.com/theurbn</a>
+  </section>
+
+  <div id="app" style='display: none;'>
+    <div id="game"></div>
+    <div class="crosshair"></div>
+    <div id="control-panel"></div>
+  </div>
+
+  <div id="phone" class="container" style='display: none;'>
+    <h1>Oops, 2k17 but we don't support mobile devices 🤔</h1>
+  </div>
+  <script src="/dist/app.js"></script>
+</body>
+
 </html>

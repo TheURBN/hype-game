@@ -69,6 +69,30 @@ body {
   background: $backgorund;
 }
 
+.linkblock {
+  text-decoration: none;
+}
+
+.icon,
+
+.icon-text {
+  display: inline-block;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  transition: all .3s ease;
+  padding: 5px 0;
+  vertical-align: middle;
+}
+
+.icon {
+  margin-right: 5px;
+  border-bottom: none;
+}
+
+.icon-text:hover {
+  border-bottom-color: rgba(255, 255, 255, 0);
+}
+
 .sign-in {
   flex-direction: column;
 
