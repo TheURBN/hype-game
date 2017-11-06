@@ -5,6 +5,15 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   margin-top: 20px;
+
+  &-desc {
+    margin: 2px 0;
+
+    strong {
+      color: #dadada;
+    }
+  }
+
   &-item {
     padding: 10px;
     position: relative;
@@ -35,6 +44,13 @@
       display: block;
       height: auto;
     }
+  }
+
+  &-controls {
+    height: 85%;
+    width: auto;
+    margin: 5% auto;
+    display: block;
   }
 }
 
