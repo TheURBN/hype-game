@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">    
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css" />
-    <link rel="stylesheet" href="/dist/main.css" />
-    <title>HYPE GAME</title>
-  </head>
-  <body>
-    <div id="app" class="container dashboard"></div>
-    <script src="/dist/dashboard.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css" />
+  <link rel="stylesheet" href="/dist/main.css" />
+  <title>TheURBN Game</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108836948-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108836948-1');
+  </script>
+</head>
+
+<body>
+  <div id="app" class="container dashboard"></div>
+  <script src="/dist/dashboard.js"></script>
+</body>
+
 </html>

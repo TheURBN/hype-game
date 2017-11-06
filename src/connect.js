@@ -45,10 +45,10 @@ const socketEngine = {
     store.emitMessage(`${data.data.name} has joined the game`);
   },
   userLogout: (data) => {
-    store.emitMessage(`${data.data.name} left the game`);
+    store.emitMessage(`${data.data.name} has left the game`);
   },
   flagCaptured: (data) => {
-    store.emitMessage(`${data.data.name} captured the flag "${data.data.flag}"`);
+    store.emitMessage(`${data.data.name} has captured the flag "${data.data.flag}"`);
   },
 };
 
