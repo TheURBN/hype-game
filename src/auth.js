@@ -9,7 +9,7 @@ const uiConfig = {
       store.section('loader').show();
       store.section('sign-in').hide();
 
-      return true;
+      return false;
     },
   },
   signInOptions: [

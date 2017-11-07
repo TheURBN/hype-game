@@ -194,16 +194,16 @@
             <text id="space" font-family="ArialMT, Arial" font-size="34" font-weight="normal" letter-spacing="2.48038101" fill="#8A8A8A">
                 <tspan x="165.435278" y="550">space</tspan>
             </text>
-            <text id="jump" font-family="RobotoCondensed-Regular, Roboto Condensed" font-size="40" font-style="condensed" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
+            <text id="jump" font-family="Roboto" font-size="40" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
                 <tspan x="156.111075" y="632">jump</tspan>
             </text>
-            <text id="control-scheme" font-family="RobotoCondensed-Regular, Roboto Condensed" font-size="40" font-style="condensed" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
+            <text id="control-scheme" font-family="Roboto" font-size="40" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
                 <tspan x="211.335053" y="37">control scheme</tspan>
             </text>
-            <text id="create-voxel" font-family="RobotoCondensed-Regular, Roboto Condensed" font-size="40" font-style="condensed" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
+            <text id="create-voxel" font-family="Roboto" font-size="40" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
                 <tspan x="461.284398" y="632">create voxel</tspan>
             </text>
-            <text id="move" font-family="RobotoCondensed-Regular, Roboto Condensed" font-size="40" font-style="condensed" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
+            <text id="move" font-family="Roboto" font-size="40" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
                 <tspan x="152.429435" y="446">move</tspan>
             </text>
             <g id="Oval" opacity="0.574048913" style="mix-blend-mode: darken;" fill-opacity="1" fill="black">
@@ -220,7 +220,7 @@
                 <use fill="black" fill-opacity="1" filter="url(#filter-35)" xlink:href="#path-34"></use>
                 <use fill="#6E6F71" fill-rule="evenodd" xlink:href="#path-34"></use>
             </g>
-            <text id="reveal-mouse-pointer" font-family="RobotoCondensed-Regular, Roboto Condensed" font-size="40" font-style="condensed" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
+            <text id="reveal-mouse-pointer" font-family="Roboto" font-size="40" font-weight="normal" letter-spacing="2.91809511" fill="#FFFFFF">
                 <tspan x="152.319049" y="132">reveal mouse pointer</tspan>
             </text>
         </g>

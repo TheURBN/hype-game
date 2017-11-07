@@ -29,11 +29,18 @@ export default {
   data () {
     return {
       help: template,
+      controls: false,
     }
   },
   created() {
     window.addEventListener('keydown', (e) => {
-      if (e.keyCode === 72) this.$modal.show('helpContols');
+      if (e.keyCode === 72 && !this.controls) {
+        this.$modal.show('helpContols');
+        this.controls = true;
+      } else {
+        this.controls = false;
+        this.$modal.hide('helpContols');
+      }
     });
   },
 };
