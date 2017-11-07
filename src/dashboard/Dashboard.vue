@@ -32,9 +32,6 @@ export default {
       messages: store.messages,
     }
   },
-  mounted() {
-    console.log('mount', this.noFlexBoxSupport(document));
-  },
   methods: {
     noFlexBoxSupport(d = document){
       const f = "flex", e = d.createElement('b');
