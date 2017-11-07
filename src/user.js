@@ -24,7 +24,7 @@ class User {
   init(game) {
     this.avatar = player(game)();
     this.avatar.possess();
-    this.setPosition();
+    this.setPosition(485 + _.random(30), 40, 485 + _.random(30));
     this.removeBody();
 
     if (this.admin) window.makeFly = () => this.makeFly(game);
