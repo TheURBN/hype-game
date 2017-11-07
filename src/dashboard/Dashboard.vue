@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ noflex: noFlexBoxSupport() }">
     <div class="dashboard-header">
       <div class="dashboard-logo"></div>
       <a href="http://urbn.odn.pw">URBN.ODN.PW</a>
@@ -32,11 +32,33 @@ export default {
       messages: store.messages,
     }
   },
+  mounted() {
+    console.log('mount', this.noFlexBoxSupport(document));
+  },
+  methods: {
+    noFlexBoxSupport(d = document){
+      const f = "flex", e = d.createElement('b');
+      e.style.display = f;
+
+      return e.style.display !== f;
+    },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+  .noflex {
+    display: block;
+    .dashboard {
+      display: block;
 
+      .leaderboard, .timeline, #sign-in {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: -4px;
+      }
+    }
+  }
   .dashboard {
     background: #000;
     display: flex;
